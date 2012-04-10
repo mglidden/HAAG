@@ -28,11 +28,21 @@ User.find_or_create_by_email(
 
 )
 
-Course.find_or_create_by_name(
+computer_system_engineering = Course.find_or_create_by_name(
   :name => '6.033 Computer System Engineering'
 )
 
-Course.find_or_create_by_name(
+user_interface_design = Course.find_or_create_by_name(
   :name => '6.813 User Interface Design'
+)
+
+Assignment.find_or_create_by_description(
+  :description => 'Nanoquiz Makeup',
+  :course => user_interface_design
+)
+
+Assignment.find_or_create_by_description(
+  :description => 'Reading Therac paper',
+  :course => computer_system_engineering
 )
 
