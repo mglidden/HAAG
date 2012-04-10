@@ -2,6 +2,8 @@ Haag::Application.routes.draw do
   resources :assignments
 
   resources :courses
+  
+  resource :dashboard, :only => :show
 
   devise_for :users
 
