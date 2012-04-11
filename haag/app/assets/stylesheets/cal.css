@@ -1,0 +1,55 @@
+#course-lst {
+  float:right;
+  height:657px;
+  padding:2px 0;
+  width:30%;
+}
+
+#course-lst-header {
+  background-color:#e1e1db;
+  font-size:24pt;
+  height:37px;
+  margin-bottom:2px;
+  text-align:center;
+}
+
+#course-lst-label {
+  line-height:37px;
+}
+
+#course-lst-body {
+  background-color:#e1e1db;
+  height:614px;
+  padding:5px;
+}
+
+#cal {
+  border-collapse:separate;
+  border-spacing:2px;
+  float:left;
+  width:70%;
+}
+
+#day-names {
+  text-align:center;
+}
+
+#day-names td {
+  height:35px;
+  font-size:24pt;
+}
+
+.cal-day {
+  height:150px;
+  vertical-align:top;
+  width:90px;
+}
+
+#cal tr {
+  background-color:#e1e1db;
+}
+
+.date-num {
+  display:block;
+  padding-left:3px;
+}

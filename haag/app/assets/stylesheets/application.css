@@ -5,3 +5,34 @@
  *= require_self
  *= require_tree . 
 */
+
+html {
+  height:100%;
+}
+
+#header {
+  background-image:-webkit-linear-gradient(top, #3E3E3E, black);
+  box-shadow: 0 0 24px 2px black;
+  color: #e1e1db;
+  height:50px;
+  width:100%;
+}
+
+#header-content {
+  padding-top:12px;
+}
+
+#logo {
+  float:left;
+  font-size:30pt;
+}
+
+#header-right {
+  float:right;
+  font-size:20pt;
+}
+
+#content-container {
+  height:100%;
+  padding-top:15px;
+}

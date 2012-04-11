@@ -4,6 +4,8 @@ class CoursesController < ApplicationController
   # GET /courses
   def index
     @courses = Course.all
+    @start_day = 5
+    @days_month = 30
   end
 
   # GET /courses/1
