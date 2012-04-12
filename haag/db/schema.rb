@@ -24,8 +24,7 @@ ActiveRecord::Schema.define(:version => 20120412042102) do
   add_index "assignments", ["course_id"], :name => "index_assignments_on_course_id"
 
   create_table "courses", :force => true do |t|
-    t.string   "short_name"
-    t.string   "long_name"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
