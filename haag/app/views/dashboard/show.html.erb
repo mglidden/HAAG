@@ -7,6 +7,15 @@ Manage <%= link_to 'assignments', assignments_path %>
 </p>
 
 <h2>Courses for <%= @user.name %></h2>
+<ul>
 <% @user.courses.each do |course| %>
-<%= course.name %>
+<li><%= course.name %></li>
 <% end %>
+</ul>
+
+<h2>Assignments for <%= @user.name %></h2>
+<ul>
+<% @user.tasks.each do |tasks| %>
+<li><%= tasks.assignment.description %></li>
+<% end %>
+</ul>

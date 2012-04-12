@@ -36,20 +36,20 @@ user_interface_design = Course.find_or_create_by_name(
   :name => '6.813 User Interface Design'
 )
 
-Assignment.find_or_create_by_description(
+nanoquiz_makeup = Assignment.find_or_create_by_description(
   :description => 'Nanoquiz Makeup',
   :course => user_interface_design
 )
 
-Assignment.find_or_create_by_description(
+therac_reading = Assignment.find_or_create_by_description(
   :description => 'Reading Therac paper',
   :course => computer_system_engineering
 )
 
 User.all.each do |user|
-  if user.courses.empty?
-    user.courses << computer_system_engineering;
-    user.courses << user_interface_design;
-    user.save!
+  user.courses << Course.all if user.courses.empty?   
+  if user.tasks.empty?
+    user.tasks.create(:assignment => nanoquiz_makeup)
+    user.tasks.create(:assignment => therac_reading)
   end
 end

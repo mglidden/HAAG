@@ -1,4 +1,6 @@
 Haag::Application.routes.draw do
+  resources :tasks
+
   resources :assignments
 
   resources :courses
