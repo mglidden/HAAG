@@ -53,3 +53,7 @@
   display:block;
   padding-left:3px;
 }
+
+/* rpj: until we have a consistent color scheme, override text color for the calendar */
+#cal * { color: black; }
+#course-lst * { color: black; }

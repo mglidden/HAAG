@@ -1,35 +1,29 @@
-<table id=cal>
-  <tr id=day-names>
-    <td>Mon.</td>
-    <td>Tue.</td>
-    <td>Wed.</td>
-    <td>Thu.</td>
-    <td>Fri.</td>
-    <td>Sat.</td>
-    <td>Sun.</td>
+<br/><br/>
+<h2>Looking for the calendar? It is in your <%= link_to 'dashboard', root_path %>.</h2>
+<br/><br/>
+
+<h1>Listing courses</h1>
+
+<table class='index'>
+  <tr>
+    <th>Short name</th>
+    <th>Long name</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
-  <% (0..3).each do |week| %>
-    <tr>
-      <% (0..6).each do |day| %>
-        <td class=cal-day>
-          <span class=date-num>
-            <%= (week*7 + day + @start_day - 1) % @days_month + 1 %>
-          </span>
-        </td>
-      <% end %>
-    </tr>
-  <% end %>
+
+<% @courses.each do |course| %>
+  <tr>
+    <td><%= course.short_name %></td>
+    <td><%= course.long_name %></td>
+    <td><%= link_to 'Show', course %></td>
+    <td><%= link_to 'Edit', edit_course_path(course) %></td>
+    <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
 </table>
-<div id=course-lst>
-  <div id=course-lst-header>
-    <span id=course-lst-label>
-      Courses
-    </span>
-  </div>
-  <div id=course-lst-body>
-    <% @courses.each do |course| %>
-      <%= course.long_name %>
-      <br>
-    <% end %>
-  </div>
-</div>
+
+<br />
+
+<%= link_to 'New Course', new_course_path %>
