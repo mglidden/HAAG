@@ -14,7 +14,9 @@
         Haag
       </div>
       <div id=header-right>
-        Logged in as sally student
+      	<% if current_user %>
+        Logged in as <%= current_user.name %> (<%= link_to "sign out", destroy_user_session_path, :method => :delete  %>)
+        <% end %>
       </div>
     </div>
   </div>
