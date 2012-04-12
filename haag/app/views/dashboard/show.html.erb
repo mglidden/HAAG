@@ -16,6 +16,9 @@ Manage <%= link_to 'assignments', assignments_path %>
 <h2>Assignments for <%= @user.name %></h2>
 <ul>
 <% @user.tasks.each do |tasks| %>
-<li><%= tasks.assignment.description %></li>
+<li>
+	<%= tasks.assignment.description %>
+	<%= ('(' + tasks.assignment.due_at + ')') if tasks.assignment.due_at %>
+</li>
 <% end %>
 </ul>
