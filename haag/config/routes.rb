@@ -14,7 +14,9 @@ Haag::Application.routes.draw do
   
   
   devise_scope :user do
-    root :to => "users#index" 
+    root :to => "dashboard#show" 
+    #get "sign_out", :to => "users/sign_out"
+    get "sign_out", :to => "devise/sessions#destroy"
   end
 
   root :to => 'devise/sessions#new'

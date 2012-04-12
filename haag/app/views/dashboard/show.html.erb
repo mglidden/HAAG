@@ -1,0 +1,12 @@
+<h1>Welcome!</h1> 
+
+<p>
+Manage <%= link_to 'users', users_path %> | 
+Manage <%= link_to 'courses', courses_path %> |
+Manage <%= link_to 'assignments', assignments_path %>
+</p>
+
+<h2>Courses for <%= @user.name %></h2>
+<% @user.courses.each do |course| %>
+<%= course.name %>
+<% end %>

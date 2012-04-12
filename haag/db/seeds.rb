@@ -46,3 +46,10 @@ Assignment.find_or_create_by_description(
   :course => computer_system_engineering
 )
 
+User.all.each do |user|
+  if user.courses.empty?
+    user.courses << computer_system_engineering;
+    user.courses << user_interface_design;
+    user.save!
+  end
+end
