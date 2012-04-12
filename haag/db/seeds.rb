@@ -28,22 +28,26 @@ User.find_or_create_by_email(
 
 )
 
-computer_system_engineering = Course.find_or_create_by_name(
-  :name => '6.033 Computer System Engineering'
+computer_system_engineering = Course.find_or_create_by_short_name(
+  :short_name => '6.033',
+  :long_name => 'Computer System Engineering'
 )
 
-user_interface_design = Course.find_or_create_by_name(
-  :name => '6.813 User Interface Design'
+user_interface_design = Course.find_or_create_by_short_name(
+  :short_name => '6.813/6.831',
+  :long_name => 'User Interface Design'
 )
 
 nanoquiz_makeup = Assignment.find_or_create_by_description(
   :description => 'Nanoquiz Makeup',
-  :course => user_interface_design
+  :course => user_interface_design,
+  :due_at => 1.day.from_now
 )
 
 therac_reading = Assignment.find_or_create_by_description(
   :description => 'Reading Therac paper',
-  :course => computer_system_engineering
+  :course => computer_system_engineering,
+  :due_at => 2.days.from_now
 )
 
 User.all.each do |user|

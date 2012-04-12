@@ -9,7 +9,7 @@ Manage <%= link_to 'assignments', assignments_path %>
 <h2>Courses for <%= @user.name %></h2>
 <ul>
 <% @user.courses.each do |course| %>
-<li><%= course.name %></li>
+<li><%= course.short_name %> <%= course.long_name %></li>
 <% end %>
 </ul>
 
@@ -18,7 +18,7 @@ Manage <%= link_to 'assignments', assignments_path %>
 <% @user.tasks.each do |tasks| %>
 <li>
 	<%= tasks.assignment.description %>
-	<%= ('(' + tasks.assignment.due_at + ')') if tasks.assignment.due_at %>
+	<%= "(#{tasks.assignment.due_at})" if tasks.assignment.due_at %>
 </li>
 <% end %>
 </ul>
