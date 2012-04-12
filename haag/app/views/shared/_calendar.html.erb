@@ -20,17 +20,3 @@
     </tr>
   <% end %>
 </table>
-
-<div id=course-lst>
-  <div id=course-lst-header>
-    <span id=course-lst-label>
-      Courses
-    </span>
-  </div>
-  <div id=course-lst-body>
-    <% @courses.each do |course| %>
-      <%= course.long_name %>
-      <br>
-    <% end %>
-  </div>
-</div>
