@@ -1,10 +1,14 @@
+require 'date'
+
 class CoursesController < ApplicationController
   before_filter :authenticate_user!
 
   # GET /courses
   def index
     @courses = Course.all
-    @start_day = 5
+    date = Date.new(Time.new.year, Time.new.month, Time.new.day)
+    @start_day = date - (date.wday - 7)
+    puts @start_date
     @days_month = 30
   end
 
