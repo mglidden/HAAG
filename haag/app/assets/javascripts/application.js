@@ -11,7 +11,7 @@
 
 $(document).ready( function() {
   $('a.popup').click(function() {
-    $('<div />').appendTo('body').load($(this).attr('href') + ' form').dialog({
+    $('#modal-dialog').load($(this).attr('href')).dialog({
       title: $(this).text()
     });
     return false;

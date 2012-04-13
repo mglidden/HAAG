@@ -5,11 +5,14 @@
     </span>
   </div>
   <div id=course-lst-body>
+    <ul>
     <% current_user.courses.each do |course| %>
-      <%= course.long_name %>
-      <br>
+      <li><%= course.long_name %></li>
     <% end %>
-	  <%= link_to 'Add class', new_course_path, :id => 'new-course-link', :class => 'popup' %>
+    </ul>
+    <%= link_to 'Create a new class', new_course_path, :id => 'new-course-link', :class => 'popup' %>
+    <br/>
+    <%= link_to 'Subscribe to an existing class', new_user_subscription_path(current_user), :id => 'new-course-link', :class => 'popup' %>
   </div>
 </div>
 

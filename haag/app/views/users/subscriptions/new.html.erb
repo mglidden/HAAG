@@ -1,0 +1,18 @@
+<p>Available courses
+<%= form_tag( user_subscriptions_path(@user), :method => :post ) do %>
+<% y @default_course %> 
+<%= 
+  select_tag( 
+    :course_id, 
+    options_from_collection_for_select(
+      @unsubscribed_courses, 
+      'id', 
+      'name', 
+      @default_course
+    ) 
+  ) 
+%>
+<%= submit_tag 'Subscribe' %> or <%= link_to 'Cancel', root_path %>
+<% end %>
+</p>
+

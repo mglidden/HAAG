@@ -1,3 +1,5 @@
+# The priority is based upon order of creation:
+# first created -> highest priority.
 Haag::Application.routes.draw do
   resources :tasks
 
@@ -9,15 +11,12 @@ Haag::Application.routes.draw do
 
   devise_for :users
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-  resources :users
-  #root :to => "home#index"
-  
+  resources :users do
+    resources :subscriptions, :only => [:new, :create], :controller => 'users/subscriptions'
+  end
   
   devise_scope :user do
     root :to => "dashboard#show" 
-    #get "sign_out", :to => "users/sign_out"
     get "sign_out", :to => "devise/sessions#destroy"
   end
 

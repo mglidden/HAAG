@@ -15,7 +15,8 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = Course.new
+    @course = Course.new    
+    render :layout => false
   end
 
   # GET /courses/1/edit
