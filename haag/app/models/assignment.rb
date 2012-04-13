@@ -9,7 +9,7 @@ class Assignment < ActiveRecord::Base
         "#{assignment.description}, due on #{assignment.due_at}" 
       message = Message.create(
         :content => content,
-        :user => user,
+        :recipient => user,
         :assignment => assignment
       )
     end

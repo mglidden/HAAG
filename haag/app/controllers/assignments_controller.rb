@@ -35,7 +35,7 @@ class AssignmentsController < ApplicationController
     @assignment.course = @course
     due_date = params[:assignment][:due_at]
     @assignment.due_at = DateTime.strptime(due_date,"%m/%d/%Y")
-    
+
     if @assignment.save
       redirect_to root_path, notice: 'Assignment was successfully created.'
     else
