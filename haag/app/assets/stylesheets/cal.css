@@ -56,4 +56,14 @@
 
 /* rpj: until we have a consistent color scheme, override text color for the calendar */
 #cal * { color: black; }
-#course-lst * { color: black; }
+
+#course-lst li {
+  border-radius:7px;
+  display:block;
+  margin:4px;
+  padding-left:5px;
+}
+
+#course-lst ul {
+  margin-left:0;
+}

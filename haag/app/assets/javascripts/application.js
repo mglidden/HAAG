@@ -17,6 +17,13 @@ $(document).ready( function() {
     });
     return false;
   });
+  $('td.popup').click(function() {
+    $('#modal-dialog').load($(this).attr('href')).dialog({
+      title: "Create a new assignment",
+      modal: true
+    });
+    return false;
+  });
   
   
 });

@@ -20,26 +20,23 @@ class DashboardController < ApplicationController
     # rpj: I had to change it to show only the assignments associated  
     # with the current user (through a task); otherwise, all assignments  
     # for all courses would be shown
+    # mglidden: the code is equilivant - @user.courses only shows courses
+    # that the user has. But @user.tasks is clearer than the nested iteration
 
-    # @user.courses.each do |course|
-      # puts course.long_name
-      # course.assignments.each do |assignment|
-      @user.tasks.each do |task|
-        assignment = task.assignment
-        puts assignment.description
-        due_date = assignment.due_at
-        unless due_date
-          break
-        end
-        if due_date.year == today.year 
-          if due_date.day >= @start_day and due_date.month == today.month
-            @shown_assignments[due_date.day - @start_day + 1].push(assignment)
-          elsif due_date.day <= @days_month - 28 + @start_day and 
-            @shown_assignments[due_date.day + days_month - @start_day + 1].push(assignment)
-          end
+    @user.tasks.each do |task|
+      assignment = task.assignment
+      due_date = assignment.due_at
+      unless due_date
+        break
+      end
+      if due_date.year == today.year 
+        if due_date.day >= @start_day and due_date.month == today.month
+          @shown_assignments[due_date.day - @start_day + 1].push(assignment)
+        elsif due_date.day <= @days_month - 28 + @start_day and 
+          @shown_assignments[due_date.day + days_month - @start_day + 1].push(assignment)
         end
       end
-    # end
+    end
 
     @shown_assignments = @shown_assignments.enum_for(:each_with_index).collect do |assignments, index|
       day = (index + @start_day - 1) % @days_month + 1

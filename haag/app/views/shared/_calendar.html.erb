@@ -12,13 +12,14 @@
       <% (0..6).each do |day| %>
         <% index = week*7 + day %>
         <% cal_date = @shown_assignments[index] %>
-        <td class=cal-day onclick='cal.newAssignmentPopup(event)' day=<%= cal_date.day %> month=<%= cal_date.month %> href='/assignments/new?day=<%= cal_date.day %>&month=<%= cal_date.month%>&year=<%= cal_date.year%>'>
+        <td class='cal-day popup' href='/assignments/new?day=<%= cal_date.day %>&month=<%= cal_date.month%>&year=<%= cal_date.year%>'>
           <span class=date-num>
             <%= cal_date.day %>
           </span>
           <% cal_date.assignment_lst.each do |a| %>
-            <%= a.description%>
-            <br/>
+            <div style='background-color:<%= a.course.color %>'>
+              <%= a.description%>
+            </div>
           <% end %>
         </td>
       <% end %>
