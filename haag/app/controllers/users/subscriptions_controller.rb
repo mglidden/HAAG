@@ -15,7 +15,7 @@ class Users::SubscriptionsController < ApplicationController
     user.courses << course    
     
     if user.save
-      redirect_to course, notice: 'Course was successfully created.'
+      redirect_to root_path, notice: 'Class added successfully.'
     else
       render action: "new"
     end    
