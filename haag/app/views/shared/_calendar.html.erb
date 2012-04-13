@@ -8,7 +8,7 @@
     <td>Sat.</td>
   </tr>
   <% (0..3).each do |week| %>
-    <tr>
+    <tr class='cal-week'>
       <% (0..6).each do |day| %>
         <% index = week*7 + day %>
         <% cal_date = @shown_assignments[index] %>
