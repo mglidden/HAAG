@@ -42,6 +42,12 @@ microelectronics = Course.find_or_create_by_short_name(
   :long_name => 'Microelectronic Devices and Circuits'
 ) 
 
+User.all.each do |user|
+  if user.courses.empty?
+    user.courses << [ computer_system_engineering, user_interface_design ]
+  end
+end
+
 nanoquiz_makeup = Assignment.find_or_create_by_description(
   :creator => adrian,
   :description => 'Nanoquiz Makeup',
@@ -64,12 +70,9 @@ ps1 = Assignment.find_or_create_by_description(
 )
 
 User.all.each do |user|
-  if user.courses.empty?
-    user.courses << [ computer_system_engineering, user_interface_design ]
-  end
-        
   if user.tasks.empty?
     user.tasks.create(:assignment => nanoquiz_makeup)
     user.tasks.create(:assignment => therac_reading)
   end
 end
+

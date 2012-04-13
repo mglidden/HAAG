@@ -1,11 +1,15 @@
 # The priority is based upon order of creation:
 # first created -> highest priority.
 Haag::Application.routes.draw do
+  resources :messages
+
   resources :tasks
 
   resources :courses do
     resources :assignments
   end
+  
+  resources :assignments
 
   resource :dashboard, :only => :show
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120413051531) do
+ActiveRecord::Schema.define(:version => 20120413054714) do
 
   create_table "assignments", :force => true do |t|
     t.string   "description"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120413051531) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "due_at"
+    t.integer  "user_id"
   end
 
   add_index "assignments", ["course_id"], :name => "index_assignments_on_course_id"
@@ -34,6 +35,17 @@ ActiveRecord::Schema.define(:version => 20120413051531) do
     t.integer "course_id"
     t.integer "user_id"
   end
+
+  create_table "messages", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "assignment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["assignment_id"], :name => "index_messages_on_assignment_id"
+  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
 
   create_table "tasks", :force => true do |t|
     t.integer  "user_id"

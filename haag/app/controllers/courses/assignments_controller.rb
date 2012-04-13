@@ -1,4 +1,4 @@
-class AssignmentsController < ApplicationController
+class Courses::AssignmentsController < ApplicationController
   before_filter :authenticate_user!
   
   # GET /assignments
@@ -15,9 +15,8 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/new
   def new
+    @course = Course.find(params[:course_id])
     @assignment = Assignment.new
-    
-    render :layout => false
   end
 
   # GET /assignments/1/edit

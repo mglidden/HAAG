@@ -10,11 +10,16 @@
       <li><%= course.long_name %></li>
     <% end %>
     </ul>
-    <%= link_to 'Create a new class', new_course_path, :id => 'new-course-link', :class => 'popup' %>
+    <%= link_to 'Create a new class', new_course_path, :class => 'popup' %>
     <br/>
-    <%= link_to 'Subscribe to an existing class', new_user_subscription_path(current_user), :id => 'new-course-link', :class => 'popup' %>
+    <%= link_to 'Subscribe to an existing class', new_user_subscription_path(current_user), :class => 'popup' %>
+    <br/>
+    <%= link_to 'Create an assignment', new_assignment_path, :class => 'popup' %>
+    <br/>
+    <% current_user.messages.each do |message| %>
+      <li><%= message.content %></li>
+    <% end %>
+
   </div>
 </div>
 
-<%= javascript_tag do %>
-<% end %>
