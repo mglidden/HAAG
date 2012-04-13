@@ -6,7 +6,7 @@
   </div>
   <div id=course-lst-body>
     <% @courses.each do |course| %>
-      <%= course.name %>
+      <%= course.long_name %>
       <br>
     <% end %>
 	  <%= link_to 'Add class', new_course_path, :id => 'new-course-link', :class => 'popup' %>
