@@ -67,3 +67,9 @@
 #course-lst ul {
   margin-left:0;
 }
+
+.cal-assignment {
+  border-radius:8px;
+  margin:0 3px 5px 3px;
+  padding:1px 4px;
+}
