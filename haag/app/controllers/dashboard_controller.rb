@@ -18,7 +18,7 @@ class DashboardController < ApplicationController
     end
 
     # rpj: I had to change it to show only the assignments associated  
-    # with thecurrent  user (through a task); otherwise, all assignments  
+    # with the current user (through a task); otherwise, all assignments  
     # for all courses would be shown
 
     # @user.courses.each do |course|

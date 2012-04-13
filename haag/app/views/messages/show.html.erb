@@ -7,14 +7,12 @@
 
 <p>
   <b>User:</b>
-  <%= @message.user %>
+  <%= @message.recipient.name %>
 </p>
 
 <p>
   <b>Assignment:</b>
-  <%= @message.assignment %>
+  <%= @message.assignment.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_message_path(@message) %> |
 <%= link_to 'Back', messages_path %>
