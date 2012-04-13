@@ -17,9 +17,15 @@ class DashboardController < ApplicationController
       @shown_assignments[i] = []
     end
 
-    @user.courses.each do |course|
-      puts course.long_name
-      course.assignments.each do |assignment|
+    # rpj: I had to change it to show only the assignments associated  
+    # with thecurrent  user (through a task); otherwise, all assignments  
+    # for all courses would be shown
+
+    # @user.courses.each do |course|
+      # puts course.long_name
+      # course.assignments.each do |assignment|
+      @user.tasks.each do |task|
+        assignment = task.assignment
         puts assignment.description
         due_date = assignment.due_at
         unless due_date
@@ -33,7 +39,7 @@ class DashboardController < ApplicationController
           end
         end
       end
-    end
+    # end
 
     @shown_assignments = @shown_assignments.enum_for(:each_with_index).collect do |assignments, index|
       day = (index + @start_day - 1) % @days_month + 1
