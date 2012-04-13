@@ -9,6 +9,7 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/1
   def show
+    @course = Course.find(params[:course_id])
     @assignment = Assignment.find(params[:id])
   end
 
@@ -20,6 +21,7 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/1/edit
   def edit
+    @course = Course.find(params[:course_id])
     @assignment = Assignment.find(params[:id])
   end
 
