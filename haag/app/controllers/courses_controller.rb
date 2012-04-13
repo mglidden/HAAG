@@ -1,4 +1,5 @@
 require 'date'
+include CoursesHelper
 
 class CoursesController < ApplicationController
   before_filter :authenticate_user!
@@ -27,6 +28,7 @@ class CoursesController < ApplicationController
   # POST /courses
   def create
     @course = Course.new(params[:course])
+    @course.color = random_color_str
     
     if @course.save
       redirect_to root_path, notice: 'Course was successfully created.'
