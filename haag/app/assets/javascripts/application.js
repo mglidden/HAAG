@@ -11,14 +11,14 @@
 
 $(document).ready( function() {
   $('a.popup').click(function() {
-    $('#modal-dialog').load($(this).attr('href')).dialog({
+    $('#modal-dialog').text('').load($(this).attr('href')).dialog({
       title: $(this).text(),
       modal: true
     });
     return false;
   });
   $('td.popup').click(function() {
-    $('#modal-dialog').load($(this).attr('href')).dialog({
+    $('#modal-dialog').text('').load($(this).attr('href')).dialog({
       title: "Create a new assignment",
       modal: true
     });
