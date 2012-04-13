@@ -1,9 +1,10 @@
 module CalHelper
   class CalDate
-    attr_accessor :date, :assignment_lst
+    attr_accessor :day, :month, :assignment_lst
 
-    def initialize(date, assignment_lst)
-      self.date = date
+    def initialize(day, month, assignment_lst)
+      self.day = day
+      self.month = month
       self.assignment_lst = assignment_lst
     end
   end

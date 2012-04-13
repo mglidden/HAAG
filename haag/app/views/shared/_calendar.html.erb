@@ -1,5 +1,4 @@
-<table id=cal>
-  <tr id=day-names>
+<table id=cal> <tr id=day-names>
     <td>Sun.</td>
     <td>Mon.</td>
     <td>Tue.</td>
@@ -12,11 +11,12 @@
     <tr>
       <% (0..6).each do |day| %>
         <% index = week*7 + day %>
-        <td class=cal-day>
+        <% cal_date = @shown_assignments[index] %>
+        <td class=cal-day onclick='cal.newAssignmentPopup(event)' day=<%= cal_date.day %> month=<%= cal_date.month %> href='/assignment_by_date?day=<%=cal_date.day%>&month=<%=cal_date.month%>'>
           <span class=date-num>
-            <%= @shown_assignments[index].date %>
+            <%= cal_date.day %>
           </span>
-          <% @shown_assignments[index].assignment_lst.each do |a| %>
+          <% cal_date.assignment_lst.each do |a| %>
             <%= a.description%>
             <br/>
           <% end %>

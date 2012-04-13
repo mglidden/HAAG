@@ -9,6 +9,9 @@ Haag::Application.routes.draw do
 
   devise_for :users
 
+  match '/assignment_by_date' => 'assignments#new_by_date'
+  match '/create_assignment_by_date' => 'assignments#create_by_date'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   resources :users

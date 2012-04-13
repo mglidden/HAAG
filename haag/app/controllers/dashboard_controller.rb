@@ -37,7 +37,8 @@ class DashboardController < ApplicationController
 
     @shown_assignments = @shown_assignments.enum_for(:each_with_index).collect do |assignments, index|
       day = (index + @start_day - 1) % @days_month + 1
-      CalDate.new(day, assignments)
+      month = (index + @start_day - 1) / @days_month + today.month
+      CalDate.new(day, month, assignments)
     end
   end
   

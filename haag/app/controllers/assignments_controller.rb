@@ -19,6 +19,15 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.new
   end
 
+  def new_by_date
+    render :layout => false
+  end
+
+  def create_by_date
+    puts params
+    render :inline => "blah"
+  end
+
   # GET /assignments/1/edit
   def edit
     @course = Course.find(params[:course_id])
