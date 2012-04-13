@@ -8,3 +8,13 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+
+$(document).ready( function() {
+  $('a.popup').click(function() {
+    $('<div />').appendTo('body').load($(this).attr('href') + ' form').dialog({
+      title: $(this).text()
+    });
+    return false;
+  });
+});
