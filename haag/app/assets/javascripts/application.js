@@ -12,7 +12,8 @@
 $(document).ready( function() {
   $('a.popup').click(function() {
     $('#modal-dialog').load($(this).attr('href')).dialog({
-      title: $(this).text()
+      title: $(this).text(),
+      modal: true
     });
     return false;
   });
