@@ -10,12 +10,14 @@
       <li><%= course.long_name %></li>
     <% end %>
     </ul>
+    <hr/>
     <%= link_to 'Create a new class', new_course_path, :class => 'popup' %>
     <br/>
     <%= link_to 'Subscribe to an existing class', new_user_subscription_path(current_user), :class => 'popup' %>
     <br/>
     <%= link_to 'Create an assignment', new_assignment_path, :class => 'popup' %>
     <br/>
+    <hr/>
     <%= render :partial => 'shared/messages', :locals => { :user => current_user } %>
   </div>
 </div>

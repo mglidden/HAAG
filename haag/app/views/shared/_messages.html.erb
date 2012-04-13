@@ -1,4 +1,9 @@
-<h2>New messages</h2>
+<% if user.messages.any? %>
+  <h2>New messages</h2>
+<% else %>
+  <h2>No new messages</h2>
+<% end %>
+
 <% user.messages.each do |message| %>
   <%# TODO: style using css %>
   <div style='border:1px solid black;'>
