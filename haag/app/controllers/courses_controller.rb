@@ -31,6 +31,8 @@ class CoursesController < ApplicationController
     @course.color = random_color_str
     
     if @course.save
+      current_user.courses.push(@course)
+      current_user.save
       redirect_to root_path, notice: 'Course was successfully created.'
     else
       render action: "new"
