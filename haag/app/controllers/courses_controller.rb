@@ -6,10 +6,6 @@ class CoursesController < ApplicationController
   # GET /courses
   def index
     @courses = Course.all
-    date = Date.new(Time.new.year, Time.new.month, Time.new.day)
-    @start_day = date - (date.wday - 7)
-    puts @start_date
-    @days_month = 30
   end
 
   # GET /courses/1

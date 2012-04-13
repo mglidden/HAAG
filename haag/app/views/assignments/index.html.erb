@@ -12,14 +12,14 @@
 <% @assignments.each do |assignment| %>
   <tr>
     <td><%= assignment.description %></td>
-    <td><%= assignment.course.name %></td>
-    <td><%= link_to 'Show', assignment %></td>
-    <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-    <td><%= link_to 'Destroy', assignment, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= assignment.course.name %></td
+    <td><%= link_to 'Show', course_assignment_path(@course, assignment) %></td>
+    <td><%= link_to 'Edit', edit_course_assignment_path(@course, assignment) %></td>
+    <td><%= link_to 'Destroy', :id => assignment.id, :confirm => 'Are you sure?', :controller => 'assignments', :action => 'destroy' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Assignment', new_assignment_path %>
+<%= link_to 'New Assignment', new_course_assignment_path(@course) %>

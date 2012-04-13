@@ -3,7 +3,8 @@ class AssignmentsController < ApplicationController
   
   # GET /assignments
   def index
-    @assignments = Assignment.all
+    @course = Course.find(params[:course_id])
+    @assignments = @course.assignments
   end
 
   # GET /assignments/1
@@ -13,6 +14,7 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/new
   def new
+    @course = Course.find(params[:course_id])
     @assignment = Assignment.new
   end
 
@@ -23,10 +25,12 @@ class AssignmentsController < ApplicationController
 
   # POST /assignments
   def create
-    @assignment = Assignment.new(params[:assignment])
+    @course = Course.find(params[:course_id])
+    @assignment = @course.assignments.create()
+    @assignment.description = params[:assignment][:description]
 
     if @assignment.save
-      redirect_to @assignment, notice: 'Assignment was successfully created.'
+      redirect_to @course, notice: 'Assignment was successfully created.'
     else
       render action: "new"
     end
