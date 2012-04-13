@@ -33,7 +33,7 @@
   </div>
   <div class="field" id='due-at'>
     <%= f.label :due_at %><br />
-    <%= f.text_field :due_at %>
+    <%= f.text_field :due_at, :value => @default_date %>
   </div>
   <div class="actions">
     <%= f.submit %>
@@ -41,5 +41,10 @@
 <% end %>
 
 <%= javascript_tag do %>
-  $('#assignment_due_at').datepicker();
+  <% if @default_date != '' %>
+    <%= puts "first" %>
+    $('#assignment_due_at').datepicker({defaultDate:<%= @default_date %>})
+  <% else %>
+    $('#assignment_due_at').datepicker();
+  <% end %>
 <% end %>

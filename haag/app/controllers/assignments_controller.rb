@@ -17,17 +17,14 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
     @courses = current_user.courses
+    @default_date = ''
+    if params[:day] and params[:month] and params[:year]
+      @default_date = params[:month] + '/' + params[:day] + '/' + params[:year]
+    end
+
+    puts "here " + @default_date
     
     render :layout => false
-  end
-
-  def new_by_date
-    render :layout => false
-  end
-
-  def create_by_date
-    puts params
-    render :inline => "blah"
   end
 
   # GET /assignments/1/edit
