@@ -3,8 +3,9 @@
   <%# TODO: style using css %>
   <div style='border:1px solid black;'>
     <%= message.content %>
-    <%= form_tag( dismiss_message_path(message), :method => :post ) do %>
-      <%= submit_tag 'Dismiss' %>
+    <%= form_tag( add_or_dismiss_message_path(message), :method => :post ) do %>
+      <%= submit_tag 'Add', :value => 'add' %>
+      <%= submit_tag 'Dismiss', :value => 'dismiss' %>
     <% end %>
   </div>
 <% end %>
