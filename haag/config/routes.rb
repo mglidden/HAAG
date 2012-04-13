@@ -1,9 +1,20 @@
+# The priority is based upon order of creation:
+# first created -> highest priority.
 Haag::Application.routes.draw do
+  resources :messages do
+    member do
+      post :dismiss
+      post :add_or_dismiss
+    end
+  end
+
   resources :tasks
 
   resources :courses do
     resources :assignments
   end
+  
+  resources :assignments
 
   resource :dashboard, :only => :show
 
@@ -17,10 +28,12 @@ Haag::Application.routes.draw do
   resources :users
   #root :to => "home#index"
   
+  resources :users do
+    resources :subscriptions, :only => [:new, :create], :controller => 'users/subscriptions'
+  end
   
   devise_scope :user do
     root :to => "dashboard#show" 
-    #get "sign_out", :to => "users/sign_out"
     get "sign_out", :to => "devise/sessions#destroy"
   end
 

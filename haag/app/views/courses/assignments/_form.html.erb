@@ -17,29 +17,9 @@
   </div>
   <div class="field">
     <%= f.label :course %><br />
-    <%#= f.text_field :course %>
-    
-<%= 
-  select_tag( 
-    :course_id, 
-    options_from_collection_for_select(
-      @courses, 
-      'id', 
-      'name', 
-      @courses.first
-    ) 
-  ) 
-%>    
-  </div>
-  <div class="field" id='due-at'>
-    <%= f.label :due_at %><br />
-    <%= f.text_field :due_at %>
+    <%= f.text_field :course %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
-
-<%= javascript_tag do %>
-  $('#assignment_due_at').datepicker();
 <% end %>

@@ -5,5 +5,10 @@ class ApplicationController < ActionController::Base
   # http://devise.plataformatec.com.br/#getting-started/controller-filters-and-helpers
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path
-  end  
+  end
+  
+  def render_with_layout_as_needed(options={})
+    render options.merge(:layout => !request.xhr?)
+  end
+
 end

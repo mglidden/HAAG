@@ -11,9 +11,12 @@
 
 $(document).ready( function() {
   $('a.popup').click(function() {
-    $('<div />').appendTo('body').load($(this).attr('href') + ' form').dialog({
-      title: $(this).text()
+    $('#modal-dialog').load($(this).attr('href')).dialog({
+      title: $(this).text(),
+      modal: true
     });
     return false;
   });
+  
+  
 });

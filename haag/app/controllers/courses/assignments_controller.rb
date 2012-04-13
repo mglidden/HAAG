@@ -1,4 +1,4 @@
-class AssignmentsController < ApplicationController
+class Courses::AssignmentsController < ApplicationController
   before_filter :authenticate_user!
   
   # GET /assignments
@@ -15,19 +15,8 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/new
   def new
+    @course = Course.find(params[:course_id])
     @assignment = Assignment.new
-    @courses = current_user.courses
-    
-    render :layout => false
-  end
-
-  def new_by_date
-    render :layout => false
-  end
-
-  def create_by_date
-    puts params
-    render :inline => "blah"
   end
 
   # GET /assignments/1/edit
@@ -39,14 +28,11 @@ class AssignmentsController < ApplicationController
   # POST /assignments
   def create
     @course = Course.find(params[:course_id])
-    @assignment = Assignment.new(params[:assignment])
-    @assignment.creator = current_user
-    @assignment.course = @course
-    due_date = params[:assignment][:due_at]
-    @assignment.due_at = DateTime.strptime(due_date,"%m/%d/%Y")
+    @assignment = @course.assignments.create()
+    @assignment.description = params[:assignment][:description]
 
     if @assignment.save
-      redirect_to root_path, notice: 'Assignment was successfully created.'
+      redirect_to @course, notice: 'Assignment was successfully created.'
     else
       render action: "new"
     end
@@ -64,7 +50,6 @@ class AssignmentsController < ApplicationController
   end
 
   # DELETE /assignments/1
-  # DELETE /assignments/1.json
   def destroy
     @assignment = Assignment.find(params[:id])
     @assignment.destroy
