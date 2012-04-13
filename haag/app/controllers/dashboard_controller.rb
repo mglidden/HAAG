@@ -6,7 +6,6 @@ class DashboardController < ApplicationController
 
   def show
     @user = current_user
-
     @courses = Course.all
 
     today = Date.new(Time.new.year, Time.new.month, Time.new.day)
