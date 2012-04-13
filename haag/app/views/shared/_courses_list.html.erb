@@ -16,10 +16,7 @@
     <br/>
     <%= link_to 'Create an assignment', new_assignment_path, :class => 'popup' %>
     <br/>
-    <% current_user.messages.each do |message| %>
-      <li><%= message.content %></li>
-    <% end %>
-
+    <%= render :partial => 'shared/messages', :locals => { :user => current_user } %>
   </div>
 </div>
 

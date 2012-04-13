@@ -1,0 +1,6 @@
+<h2>New messages</h2>
+<% user.messages.each do |message| %>
+  <div style='border:1px solid black;'>
+    <%= message.content %>    
+  </div>
+<% end %>

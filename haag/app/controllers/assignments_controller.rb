@@ -16,6 +16,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments/new
   def new
     @assignment = Assignment.new
+    @courses = current_user.courses
     
     render :layout => false
   end
@@ -29,11 +30,14 @@ class AssignmentsController < ApplicationController
   # POST /assignments
   def create
     @course = Course.find(params[:course_id])
-    @assignment = @course.assignments.create()
-    @assignment.description = params[:assignment][:description]
-
+    @assignment = Assignment.new(params[:assignment])
+    @assignment.creator = current_user
+    @assignment.course = @course
+    due_date = params[:assignment][:due_at]
+    @assignment.due_at = DateTime.strptime(due_date,"%m/%d/%Y")
+    
     if @assignment.save
-      redirect_to @course, notice: 'Assignment was successfully created.'
+      redirect_to root_path, notice: 'Assignment was successfully created.'
     else
       render action: "new"
     end
