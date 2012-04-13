@@ -11,12 +11,22 @@
   <% (0..3).each do |week| %>
     <tr>
       <% (0..6).each do |day| %>
+        <% index = week*7 + day %>
         <td class=cal-day>
           <span class=date-num>
-            <%= (week*7 + day + @start_day - 1) % @days_month + 1 %>
+            <%= @shown_assignments[index].date %>
           </span>
+          <% @shown_assignments[index].assignment_lst.each do |a| %>
+            <%= a.description%>
+            <br/>
+          <% end %>
         </td>
       <% end %>
     </tr>
+  <% end %>
+  <% @shown_assignments.each_with_index do |day, i| %>
+    if 
+    <%= day.date %>
+    <%= day.assignment_lst %>
   <% end %>
 </table>

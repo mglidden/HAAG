@@ -5,7 +5,7 @@
     </span>
   </div>
   <div id=course-lst-body>
-    <% @courses.each do |course| %>
+    <% current_user.courses.each do |course| %>
       <%= course.long_name %>
       <br>
     <% end %>
