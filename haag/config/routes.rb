@@ -1,7 +1,14 @@
 # The priority is based upon order of creation:
 # first created -> highest priority.
 Haag::Application.routes.draw do
-  resources :messages
+  resources :messages do
+    # resources :updates, :controller => 'messages/updates' do
+      member do
+        post :dismiss
+        post :add
+      end
+    # end
+  end
 
   resources :tasks
 

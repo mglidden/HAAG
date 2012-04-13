@@ -1,6 +1,10 @@
 <h2>New messages</h2>
 <% user.messages.each do |message| %>
+  <%# TODO: style using css %>
   <div style='border:1px solid black;'>
-    <%= message.content %>    
+    <%= message.content %>
+    <%= form_tag( dismiss_message_path(message), :method => :post ) do %>
+      <%= submit_tag 'Dismiss' %>
+    <% end %>
   </div>
 <% end %>
