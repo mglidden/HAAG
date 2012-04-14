@@ -13,14 +13,18 @@ $(document).ready( function() {
   $('a.popup').click(function() {
     $('#modal-dialog').text('').load($(this).attr('href')).dialog({
       title: $(this).text(),
-      modal: true
+      modal: true,
+      resizable:false,
+      draggable:false
     });
     return false;
   });
   $('td.popup').click(function() {
     $('#modal-dialog').text('').load($(this).attr('href')).dialog({
       title: "Create a new assignment",
-      modal: true
+      modal: true,
+      resizable:false,
+      draggable:false
     });
     return false;
   });
