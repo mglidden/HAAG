@@ -11,9 +11,18 @@ Haag::Application.routes.draw do
   resources :tasks
   match '/tasks/:id/complete' => 'tasks#complete'
 
+
   resources :courses do
     resources :assignments
+    collection do
+      post :validate
+    end
   end
+  
+  #match 'courses/validate' => 'courses#validate', :method => :post
+  
+  #map.resources :contacts, :member => {:validate => :post}
+
   
   resources :assignments
 

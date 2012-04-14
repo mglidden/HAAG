@@ -9,4 +9,19 @@ class Course < ActiveRecord::Base
   def name
     "#{short_name} #{long_name}"
   end
+  
+  def self.validate_field(field, value)
+    validity = Course.new(field => value)
+    p validity
+    p validity.valid?
+    p validity.errors
+    
+    validity.valid?    
+    if validity.errors[field] and !validity.valid?
+      ajaxResponse = {:valid => false, field.to_sym => validity.errors[field]}
+    else
+      ajaxResponse = {:valid => true}
+    end  
+  end
+    
 end
