@@ -89,7 +89,7 @@
   -webkit-transition:border linear 0.1s, box-shadow linear 0.1s;
 }
 
-.cal-assignment:hover {
+.cal-unfinished-assignment:hover {
   border-color:red;
   -webkit-box-shadow:0 0 8px rgba(255, 0, 0, 0.6);
 }

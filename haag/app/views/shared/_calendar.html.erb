@@ -17,7 +17,7 @@
             <%= cal_date.day %>
           </span>
           <% cal_date.tasks.each do |task| %>
-            <div class='cal-assignment <%= if task.completed? then 'cal-completed-assignment' end %>' style='background-color:<%= task.assignment.course.color %>'>
+            <div class='cal-assignment <%= task.completed? ? 'cal-completed-assignment' : 'cal-unfinished-assignment'%>' style='background-color:<%= task.assignment.course.color %>' href='/tasks/<%= task.id %>/complete'>
               <span style='color:black'>
                 <%= task.assignment.description%>
               </span>

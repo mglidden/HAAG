@@ -24,4 +24,10 @@ $(document).ready( function() {
     });
     return false;
   });
+  $('.cal-assignment').click(function(event) {
+    $.ajax($(this).attr('href'));
+    $(this).addClass('cal-completed-assignment');
+    $(this).removeClass('cal-unfinished-assignment');
+    return false;
+  });
 });
