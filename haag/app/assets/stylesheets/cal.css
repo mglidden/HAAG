@@ -35,6 +35,7 @@
 }
 
 #day-names td {
+  cursor:default;
   height:35px;
   font-size:24pt;
 }
