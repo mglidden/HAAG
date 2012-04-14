@@ -11,15 +11,15 @@
     <tr class='cal-week'>
       <% (0..6).each do |day| %>
         <% index = week*7 + day %>
-        <% cal_date = @shown_assignments[index] %>
+        <% cal_date = @shown_tasks[index] %>
         <td class='cal-day popup' href='/assignments/new?day=<%= cal_date.day %>&month=<%= cal_date.month%>&year=<%= cal_date.year%>'>
           <span class=date-num>
             <%= cal_date.day %>
           </span>
-          <% cal_date.assignment_lst.each do |a| %>
-            <div class='cal-assignment <%= if a.completed? then 'cal-completed-assignment' end %>' style='background-color:<%= a.assignment.course.color %>'>
+          <% cal_date.tasks.each do |task| %>
+            <div class='cal-assignment <%= if task.completed? then 'cal-completed-assignment' end %>' style='background-color:<%= task.assignment.course.color %>'>
               <span style='color:black'>
-                <%= a.assignment.description%>
+                <%= task.assignment.description%>
               </span>
             </div>
           <% end %>
