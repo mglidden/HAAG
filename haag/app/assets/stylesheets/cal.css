@@ -65,9 +65,6 @@
   padding-left:3px;
 }
 
-/* rpj: until we have a consistent color scheme, override text color for the calendar */
-#cal * { color: black; }
-
 #course-lst li {
   border-radius:7px;
   display:block;
@@ -92,6 +89,8 @@
 .cal-unfinished-assignment:hover {
   border-color:red;
   -webkit-box-shadow:0 0 8px rgba(255, 0, 0, 0.6);
+  color:red;
+  text-decoration:line-through;
 }
 
 .cal-completed-assignment {
