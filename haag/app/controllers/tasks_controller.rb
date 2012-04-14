@@ -80,4 +80,11 @@ class TasksController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def complete
+    @task = Task.find(params[:id])
+    @task.mark_as_completed
+    @task.save
+    render :layout => false, :inline => "task completed"
+  end
 end

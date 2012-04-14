@@ -17,8 +17,10 @@
             <%= cal_date.day %>
           </span>
           <% cal_date.assignment_lst.each do |a| %>
-            <div class='cal-assignment' style='background-color:<%= a.course.color %>'>
-              <%= a.description%>
+            <div class='cal-assignment <%= if a.completed? then 'cal-completed-assignment' end %>' style='background-color:<%= a.assignment.course.color %>'>
+              <span style='color:black'>
+                <%= a.assignment.description%>
+              </span>
             </div>
           <% end %>
         </td>

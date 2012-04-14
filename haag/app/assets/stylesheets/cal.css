@@ -93,3 +93,8 @@
   border-color:red;
   -webkit-box-shadow:0 0 8px rgba(255, 0, 0, 0.6);
 }
+
+.cal-completed-assignment {
+  color:red;
+  text-decoration:line-through;
+}

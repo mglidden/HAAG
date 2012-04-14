@@ -9,6 +9,7 @@ Haag::Application.routes.draw do
   end
 
   resources :tasks
+  match '/tasks/:id/complete' => 'tasks#complete'
 
   resources :courses do
     resources :assignments
