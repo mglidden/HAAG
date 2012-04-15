@@ -36,3 +36,8 @@ html {
   height:100%;
   padding-top:15px;
 }
+
+.box {
+  background-color:#e1e1db;
+  padding:10px 15px;
+}
