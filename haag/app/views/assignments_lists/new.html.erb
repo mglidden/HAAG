@@ -1,0 +1,12 @@
+<%= nested_form_for @list do |f| %>
+  <%#= f.error_messages %>
+  <%= f.fields_for :assignments %>
+  <p><%= f.link_to_add "Add an assignment", :assignments %></p>
+  <p><%= f.submit "I'm done adding assignments" %></p>
+<% end %>
+
+<%= javascript_tag do %>
+window.nestedFormEvents.insertFields = function(content, assoc, link) {
+  return $(link).closest('form').find(assoc + '_fields').append($(content));
+}
+<% end %>

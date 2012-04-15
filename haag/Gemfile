@@ -27,6 +27,9 @@ gem 'jquery-rails'
 
 gem 'ruby-debug19'
 
+# https://github.com/ryanb/nested_form/issues/141
+gem "nested_form", :git => 'https://github.com/ryanb/nested_form.git'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
