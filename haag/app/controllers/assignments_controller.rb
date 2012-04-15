@@ -2,8 +2,10 @@ class AssignmentsController < ApplicationController
   before_filter :authenticate_user!
   
   # for adding multiple assignments at once
-  def new_multiple
-    @course = Course.first 
+  def new_batch
+    @courses = current_user.courses
+    @course = @courses.first
+    @default_date = Date.today
   end  
   
   # POST /courses/1/assignents/validate

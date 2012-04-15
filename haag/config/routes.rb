@@ -19,10 +19,10 @@ Haag::Application.routes.draw do
   
   resources :assignments do
     #collection { post :validate }
-    # member { get :new_multiple }
+    # member { get :new_batch }
     collection do
       post :validate
-      get :new_multiple
+      get :new_batch
     end
   end
 

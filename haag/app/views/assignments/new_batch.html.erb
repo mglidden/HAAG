@@ -1,0 +1,57 @@
+<div style=".fields label { color:white; }">
+
+<%= nested_form_for @course do |f| %>
+
+  <%= f.fields_for :assignments do |af| %>
+    <table>
+      <tr>
+        <td><%= af.label :description %></td>
+        <td><%= af.text_field :description, :class => 'validate' %></td>  
+      </tr>
+      <tr>
+        <td><%= af.label :course %></td>
+        <td>
+          <%= select_tag(:course_id, 
+            options_from_collection_for_select(@courses,'id','name',@courses.first) ) %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= af.label :due_at %></td>
+        <td><%= af.text_field :due_at, :class => 'datepicker', :value => @default_date %></td>
+      </tr>
+    </table>
+
+    <%= af.link_to_remove "Remove this assignment" %>
+  
+  <% end %>
+  
+  <div class="actions">
+    <%= f.link_to_add "Add an assignment", :assignments %>
+    <%= f.submit 'Save assignments', :disabled => false %>
+  </div>
+<% end %>
+
+<%= javascript_tag do %>
+  <% if @default_date != '' %>
+    <%= puts "first" %>
+    $('#assignment_due_at').datepicker({ defaultDate: <%= @default_date %> })
+  <% else %>
+    $('#assignment_due_at').datepicker({ onSelect: function(dateText, inst) { validateField('due_at', $('#assignment_due_at').val(), $('#assignment_due_at')) }   });
+  <% end %>
+<% end %>
+
+</div>
+
+<%= script_for_live_validation %>
+
+  
+<%= javascript_tag do %>
+
+  $('.datepicker').datepicker();
+
+  window.nestedFormEvents.insertFields = function(content, assoc, link) {
+    return $(link).closest('form').find(assoc + '_fields').append($(content));
+  }
+
+<% end %>
+

@@ -17,6 +17,8 @@
     <br/>
     <%= link_to 'Create an assignment', new_assignment_path, :class => 'popup' %>
     <br/>
+    <%= link_to 'Create a bunch of assignments', new_batch_assignments_path %>
+    <br/>
     <hr/>
     <%= render :partial => 'shared/messages', :locals => { :user => current_user } %>
   </div>
