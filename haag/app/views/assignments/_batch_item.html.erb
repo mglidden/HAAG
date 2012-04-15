@@ -14,7 +14,7 @@
     </tr>
     <tr>
       <td>Due date</td>
-      <td><%= text_field_tag "due_at_#{index}", '', :class => 'datepicker' %></td>
+      <td><%= text_field_tag "due_at_#{index}", @default_date.strftime('%m/%d/%y'), :class => 'datepicker' %></td>
     </tr>
   </table>
   

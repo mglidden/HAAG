@@ -11,6 +11,24 @@ class AssignmentsController < ApplicationController
   
   def create_batch
     p params
+    
+    assignment_params = {}
+    
+    params.each_pair do |key, value|
+      if key.start_with?('description', 'course_id', 'due_at')
+        index = key.split('_').last.to_i
+        attribute = key.chomp("_#{index}").to_sym
+        p index
+        p attribute
+        value = DateTime.strptime(value,"%m/%d/%Y") if attribute == :due_at
+        p value
+        assignment_params[index] ||= {}
+#assignment_params[index] =        assignment_params[index].merge(attribute => value)
+        assignment_params[index].merge!(attribute => value)
+        p assignment_params
+      end
+    end
+    
     redirect_to root_path, notice: 'Awesome!'
   end
   

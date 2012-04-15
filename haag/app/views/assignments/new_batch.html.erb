@@ -1,8 +1,8 @@
 
 <%= form_tag( create_batch_assignments_path, :method => :post ) do %>
   
-  <%= render :partial => 'batch_item', :locals => { :index => 0 } %>
-  <%= render :partial => 'batch_item', :locals => { :index => 1 } %>
+  <%= render 'batch_item', :index => 0, :default_date => Date.today %>
+  <%= render 'batch_item', :index => 1, :default_date => Date.today %>
     
   <%= submit_tag 'Save assignments' %>
 
