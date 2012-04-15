@@ -3,12 +3,26 @@ class AssignmentsListsController < ApplicationController
   
   def new
     @list = AssignmentsList.new
-    @list.assignments << Assignment.new
+    assignment = Assignment.new(:creator => current_user)
+    @list.assignments << assignment
+    @courses = current_user.courses
   end
   
   def create
     p params
-    redirect_to root_path, :notice => 'Awesome!'
+    @list = AssignmentsList.new(params[:assignments_list])
+    @courses = current_user.courses
+
+      @list.assignments.each { |assignment| assignment.creator = current_user }
+
+   
+    if @list.save!
+      p @list
+      @list.assignments.each { |assignment| assignment.save }
+      redirect_to root_path, :notice => 'Awesome!'
+    else
+      render :action => 'new'
+    end    
   end
   
 end
