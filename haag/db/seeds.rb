@@ -52,21 +52,21 @@ end
 nanoquiz_makeup = Assignment.find_or_create_by_description(
   :creator => adrian,
   :description => 'Nanoquiz Makeup',
-  :course => user_interface_design,
+  :course_id => user_interface_design.id,
   :due_at => 1.day.from_now
 )
 
 therac_reading = Assignment.find_or_create_by_description(
   :creator => mason,
   :description => 'Reading Therac paper',
-  :course => computer_system_engineering,
+  :course_id => computer_system_engineering.id,
   :due_at => 2.days.from_now
 )
 
 ps1 = Assignment.find_or_create_by_description(
   :creator => ricardo,
   :description => 'Problem Set 1',
-  :course => microelectronics,
+  :course_id => microelectronics.id,
   :due_at => 5.days.from_now
 )
 

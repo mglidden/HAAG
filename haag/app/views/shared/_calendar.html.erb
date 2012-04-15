@@ -17,6 +17,11 @@
             <%= cal_date.day %>
           </span>
           <% cal_date.tasks.each do |task| %>
+            <% puts "here" %>
+            <% puts task %>
+            <% puts task.assignment %>
+            <% puts task.assignment.course %>
+            <% puts 'end' %>
             <div class='cal-assignment <%= task.completed? ? 'cal-completed-assignment' : 'cal-unfinished-assignment'%>' style='background-color:<%= task.assignment.course.color %>' href='/tasks/<%= task.id %>/complete'>
               <span style='color:black'>
                 <%= task.assignment.description%>

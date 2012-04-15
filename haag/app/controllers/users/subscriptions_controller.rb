@@ -13,6 +13,9 @@ class Users::SubscriptionsController < ApplicationController
     course = Course.find(params[:course_id])
     user = User.find(params[:user_id])
     user.courses << course    
+    course.assignments.each do |a|
+      user.tasks.create(:assignment => a)
+    end
     
     if user.save
       redirect_to root_path, notice: 'Class added successfully.'
