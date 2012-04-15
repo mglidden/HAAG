@@ -1,0 +1,18 @@
+<%= nested_form_for @course do |f| %>
+
+  <%= f.fields_for :assignments do |task_form| %>
+    <%= task_form.text_field :description %>
+    <%= task_form.link_to_remove "Remove this assignment" %>
+  <% end %>
+  
+  <p><%= f.link_to_add "Add an assignment", :assignments %></p>
+  <p><%= f.submit "Submit" %></p>
+
+<% end %>
+
+<%= javascript_tag do %>
+window.nestedFormEvents.insertFields = function(content, assoc, link) {
+  return $(link).closest('form').find(assoc + '_fields').append($(content));
+}
+
+<% end %>

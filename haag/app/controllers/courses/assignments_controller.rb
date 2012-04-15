@@ -1,6 +1,6 @@
 class Courses::AssignmentsController < ApplicationController
   before_filter :authenticate_user!
-    
+      
   # GET /courses/1/assignments
   def index
     @course = Course.find(params[:course_id])

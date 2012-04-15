@@ -4,6 +4,10 @@ class Course < ActiveRecord::Base
   
   validates_presence_of :name
   
+  # required by nested_form
+  accepts_nested_attributes_for :assignments
+  attr_accessible :assignments_attributes
+  
   def short_name
     name.split(' ', 2).first
   end
