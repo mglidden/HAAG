@@ -23,13 +23,10 @@ html {
 }
 
 #logo {
+  background-color:transparent;
+  color:#E1E1DB;
   float:left;
   font-size:30pt;
-}
-
-#logo:hover {
-  background-color:transparent;
-  color: #666;
   text-decoration:none;
 }
 
@@ -39,11 +36,8 @@ html {
 }
 
 #sign-out {
-  color:#666;
-}
-
-#sign-out:hover {
   background-color:transparent;
+  color:#666;
 }
 
 #content-container {
