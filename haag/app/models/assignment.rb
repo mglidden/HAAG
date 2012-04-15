@@ -5,6 +5,30 @@ class Assignment < ActiveRecord::Base
   
   validates_presence_of :description
   validates_presence_of :due_at
+  
+  
+  # validate :due_at_is_valid_datetime
+
+  # def due_at_is_valid_datetime
+    # errors.add(:due_at, 'must be a valid datetime') if ((DateTime.parse(due_at) rescue ArgumentError) == ArgumentError)
+  # end
+    
+  def due_at=(due_at_str)
+    # write_attribute :due_at, Date.parse(due_at_str)
+    # due_at_date_time = DateTime.strptime(due_at_str,"%m/%d/%Y")
+    # write_attribute(:due_at, due_at_date_time)  
+    
+    begin
+      due_at_date_time = DateTime.strptime(due_at_str,"%m/%d/%Y")
+      p 'ooooooooooooooooooooooooooooooooooooooooooooooooooooo'
+      p due_at_date_time
+      write_attribute(:due_at, due_at_date_time)
+    rescue
+      errors.add(:due_at, 'must be a valid datetime')
+    end
+    
+  end
+
 
   # TODO: this method is duplicated in various models and should be extracted to a module
   def self.json_for_validation(attribute_name, attribute_value_as_string)

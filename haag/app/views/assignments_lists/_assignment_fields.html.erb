@@ -11,7 +11,24 @@
     </tr>
     <tr>
       <td><%= f.label :due_at %></td>
-      <td><%= f.text_field :due_at, :value => @default_date %></td>
+      <td>
+        <%= f.text_field :due_at, :class => 'inline-datepicker' %>
+      </td>
     </tr>
   </table>
 </div>
+
+<%= javascript_tag do %>
+
+  $('.datepicker').datepicker(
+    { onSelect: function(dateText, inst) { 
+        validateField(
+          'due_at', 
+          $(this).val(),
+          $(this)
+        ) 
+      }   
+    }
+  );
+
+<% end %>
