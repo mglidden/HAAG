@@ -7,8 +7,8 @@
   <div>
     <%= message.content %>
     <%= form_tag( add_or_dismiss_message_path(message), :method => :post ) do %>
-      <%= submit_tag 'Add', :value => 'add' %>
-      <%= submit_tag 'Dismiss', :value => 'dismiss' %>
+      <%= submit_tag 'Add', :value => 'add', :class => 'btn' %>
+      <%= submit_tag 'Dismiss', :value => 'dismiss', :class => 'btn' %>
     <% end %>
   </div>
 <% end %>
