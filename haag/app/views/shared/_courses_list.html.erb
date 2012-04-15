@@ -7,7 +7,7 @@
   <div id=course-lst-body>
     <ul>
     <% current_user.courses.each do |course| %>
-      <li style='background-color:<%= course.color %>' color=<%= course.color %>><%= course.name %></li>
+      <li class='course-lst-itm' style='background-color:<%= course.color %>' color=<%= course.color %> href='/assignments/new?default_course=<%= course.id %>'><%= course.name %></li>
     <% end %>
     </ul>
     <hr/>

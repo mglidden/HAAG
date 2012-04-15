@@ -36,5 +36,15 @@ $(document).ready( function() {
     $(this).removeClass('cal-unfinished-assignment');
     return false;
   });
+  $('.course-lst-itm').click(function(event) {
+    $('#modal-dialog').text('').load($(this).attr('href')).dialog({
+      title: "Create a new assignment",
+      modal: true,
+      resizable:false,
+      minWidth: 340,
+      draggable:false
+    });
+    return false;
+  });
 });
 

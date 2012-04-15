@@ -27,6 +27,10 @@ class AssignmentsController < ApplicationController
       @default_date = params[:month] + '/' + params[:day] + '/' + params[:year]
     end
 
+    if params[:default_course]
+      @default_course = params[:default_course].to_i
+    end
+
     render :layout => false
   end
 
