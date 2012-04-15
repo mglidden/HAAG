@@ -37,13 +37,12 @@
   </table>
 
   <div class="actions">
-    <%= f.submit :disabled => true %>
+    <%= f.submit :disabled => true, :class => 'btn btn-inverse'%>
   </div>
 <% end %>
 
 <%= javascript_tag do %>
   <% if @default_date != '' %>
-    <%= puts "first" %>
     $('#assignment_due_at').datepicker({ defaultDate: <%= @default_date %> })
   <% else %>
     $('#assignment_due_at').datepicker({ onSelect: function(dateText, inst) { validateField('due_at', $('#assignment_due_at').val(), $('#assignment_due_at')) }   });
