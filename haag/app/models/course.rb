@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
   has_and_belongs_to_many :users
-  has_many :assignments
+  has_many :assignments, :dependent => :destroy
   
   validates_presence_of :name
   
@@ -8,9 +8,9 @@ class Course < ActiveRecord::Base
     instance = Course.new(field => value)
     instance.valid?    
     if instance.errors[field].present?
-      ajaxResponse = {:valid => false, field.to_sym => instance.errors[field]}
+      ajaxResponse = { :valid => false, field.to_sym => instance.errors[field] }
     else
-      ajaxResponse = {:valid => true}
+      ajaxResponse = { :valid => true }
     end  
   end
   
