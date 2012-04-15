@@ -4,11 +4,3 @@
   <p><%= f.link_to_add "Add an assignment", :assignments %></p>
   <p><%= f.submit "I'm done adding assignments" %></p>
 <% end %>
-
-<%= javascript_tag do %>
-
-  $('.inline-datepicker').datepicker(
-    { altFormat: 'yyyy-mm-dd' }
-  );
-    
-<% end %>
