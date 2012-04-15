@@ -18,7 +18,12 @@ Haag::Application.routes.draw do
   end
   
   resources :assignments do
-    collection { post :validate }    
+    #collection { post :validate }
+    # member { get :new_batch }
+    collection do
+      post :validate
+      get :new_batch
+    end
   end
 
   resource :dashboard, :only => :show

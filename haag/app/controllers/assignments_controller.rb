@@ -1,9 +1,16 @@
 class AssignmentsController < ApplicationController
   before_filter :authenticate_user!
   
+  # for adding multiple assignments at once
+  def new_batch
+    @courses = current_user.courses
+    @course = @courses.first
+    @default_date = Date.today
+  end  
+  
   # POST /courses/1/assignents/validate
   def validate  
-    render :json => Assignment.validate_field(params[:attribute_name], params[:attribute_value])
+    render :json => Assignment.json_for_validation(params[:attribute_name], params[:attribute_value])
   end
   
   # GET /assignments

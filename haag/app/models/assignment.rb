@@ -5,6 +5,26 @@ class Assignment < ActiveRecord::Base
   
   validates_presence_of :description
   validates_presence_of :due_at
+
+  # TODO: this method is duplicated in various models and should be extracted to a module
+  def self.json_for_validation(attribute_name, attribute_value_as_string)
+    column = self.columns_hash[attribute_name]
+    attribute_type = column.type
+    
+    attribute_value = case attribute_type
+    when :datetime then DateTime.strptime(attribute_value_as_string,"%m/%d/%Y")
+    else attribute_value_as_string
+    end
+
+    instance = self.new(attribute_name => attribute_value)
+    instance.valid?
+    if instance.errors[attribute_name].present?
+      attribute_symbol = attribute_name.to_sym
+      ajax_response = { :valid => false, attribute_symbol => instance.errors[attribute_name] }
+    else
+      ajax_response = { :valid => true }
+    end
+  end
   
   after_create do |assignment|
     course.users.each do |user|
@@ -21,22 +41,4 @@ class Assignment < ActiveRecord::Base
       end
     end
   end
-  
-  def self.validate_field(attribute_name, value)
-    attribute_type = self.columns_hash[attribute_name].type
-    attribute_symbol = attribute_name.to_sym
-    
-    if attribute_type == :datetime
-      instance = Assignment.new(attribute_symbol => DateTime.strptime(value,"%m/%d/%Y"))
-    else
-      instance = Assignment.new(attribute_symbol => value)
-    end
-
-    instance.valid?
-    if instance.errors[attribute_name].present?
-      ajax_response = {:valid => false, attribute_symbol => instance.errors[attribute_name]}
-    else
-      ajax_response = { :valid => true }
-    end
-  end  
 end
