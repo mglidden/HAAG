@@ -8,7 +8,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-//= require jquery_nested_form
 
 $(document).ready( function() {
   $('a.popup').click(function() {

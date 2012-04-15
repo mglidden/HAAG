@@ -5,8 +5,14 @@ class AssignmentsController < ApplicationController
   def new_batch
     @courses = current_user.courses
     @course = @courses.first
+    @user = current_user
     @default_date = Date.today
-  end  
+  end
+  
+  def create_batch
+    p params
+    redirect_to root_path, notice: 'Awesome!'
+  end
   
   # POST /courses/1/assignents/validate
   def validate  

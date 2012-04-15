@@ -10,4 +10,10 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :courses
   has_many :tasks
   has_many :messages
+  
+  has_many :assignments, :through => :tasks
+  # required by nested_form
+  accepts_nested_attributes_for :assignments
+  attr_accessible :assignments_attributes
+
 end
