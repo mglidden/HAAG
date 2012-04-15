@@ -27,8 +27,6 @@ class AssignmentsController < ApplicationController
       @default_date = params[:month] + '/' + params[:day] + '/' + params[:year]
     end
 
-    puts "here " + @default_date
-    
     render :layout => false
   end
 
