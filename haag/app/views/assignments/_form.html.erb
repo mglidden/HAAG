@@ -35,6 +35,7 @@
     <%= f.label :due_at %><br />
     <%= f.text_field :due_at, :value => @default_date %>
   </div>
+  
   <div class="actions">
     <%= f.submit :disabled => true %>
   </div>
@@ -43,9 +44,9 @@
 <%= javascript_tag do %>
   <% if @default_date != '' %>
     <%= puts "first" %>
-    $('#assignment_due_at').datepicker({defaultDate:<%= @default_date %>, onSelect: function(dateText, inst) { console.log('chg'); $('#assignment_due_at').change(); } })
+    $('#assignment_due_at').datepicker({ defaultDate: <%= @default_date %> })
   <% else %>
-    $('#assignment_due_at').datepicker({ onSelect: function(dateText, inst) { console.log('chg2'); validateField('due_at', $('#assignment_due_at').val(), $('#assignment_due_at')) }   });
+    $('#assignment_due_at').datepicker({ onSelect: function(dateText, inst) { validateField('due_at', $('#assignment_due_at').val(), $('#assignment_due_at')) }   });
   <% end %>
 <% end %>
 

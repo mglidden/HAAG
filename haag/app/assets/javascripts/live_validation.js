@@ -16,31 +16,29 @@
 //    <%= script_for_live_validation %>  
 //
 
-function validateField(attributeName, attributeValue, field) {
+function validateField(attributeName, attributeValue, fieldSelector) {
   var postData = { };
   postData['attribute_name'] = attributeName;
   postData['attribute_value'] = attributeValue;
+  var field = $(fieldSelector);
 
-  var postRequestCallback =  function(data) {
-    var form = $(field).closest('form');
+  var postCallback =  function(data) {
+    var form = $(fieldSelector).closest('form');
     var submitButton = form.find('input').last();
     
     if (data.valid) {
-        $(field).parent('p').removeClass('fieldWithErrors');
-        $(field).removeClass('haag-field-with-errors');
-        $(field).next('span').fadeOut(200, function() { $(this).remove(); });
-        //submitButton.prop('disabled', false);
+        field.parent('p').removeClass('fieldWithErrors');
+        field.removeClass('haag-field-with-errors');
+        field.next('span').fadeOut(200, function() { $(this).remove(); });
     } else {
-        $(field).parent('p').addClass('fieldWithErrors');
-        $(field).addClass('haag-field-with-errors');
-        $(field).next('span').remove();
-        $(field).after('<span class="inlineError">' + data[attributeName] + '</span>');
-        //submitButton.prop('disabled', true);
+        field.parent('p').addClass('fieldWithErrors');
+        field.addClass('haag-field-with-errors');
+        field.next('span').remove();
+        field.after('<span class="inlineError">' + data[attributeName] + '</span>');
     }
   
-    var form = $(field).closest('form');
+    var form = $(fieldSelector).closest('form');
     var anyFieldsBlank = false;
-    //$('.validate').each(function(index) {
     form.find('input').each(function(index) {
       if ($(this).val() == '')
         anyFieldsBlank = true;
@@ -48,13 +46,11 @@ function validateField(attributeName, attributeValue, field) {
     
     var submitButton = form.find('input').last();   
     submitButton.prop('disabled', !data.valid || anyFieldsBlank);
-  
-    //submitButton.prop('disabled', !data.object_valid);
   };
 
-  var controller_name = $(field).selector.match('#([a-z]*)_')[1]
+  var controller_name = field.selector.match('#([a-z]*)_')[1]
   var postUrl = '/' + controller_name + 's/validate';
-  $.post(postUrl, postData, postRequestCallback, 'json');
+  $.post(postUrl, postData, postCallback, 'json');
 }
 
 // General delay function, used to watch keyups,
@@ -79,39 +75,27 @@ Array.prototype.in_array = function(p_val) {
 
 function activateLiveValidation() {
 
-    var postDelayCallback = function(field_id) {
-      var atributeName = field_id.match(/_(.*)/)[1];
-      var field = $("#" + field_id);
-      validateField(
-        atributeName, 
-        field.val(),
-        field
-      );
-    };   
+  var postDelayCallback = function(field_id) {
+    var atributeName = field_id.match(/_(.*)/)[1];
+    var field = $("#" + field_id);
+    validateField(
+      atributeName, 
+      field.val(),
+      field
+    );
+  };   
   
   $(".validate").keyup( function() {
     delay(postDelayCallback(this.id), 600);
   });
 
-  $(".validate").bind( 'dateSelected', function() {
-    postDelayCallback(this.id);
-    alert('yooh');
-  });
+  // $(".validate").bind( 'dateSelected', function() {
+    // postDelayCallback(this.id);
+    // alert('yooh');
+  // });
       
-/*  $('.validate').change( function() {    
-    var noFieldsBlank = true;
-    $('.validate').each(function(index) {
-      if ($(this).val() == '')
-        noFieldsBlank = false;
-    });
-    
-    var form = $(this).closest('form');
-    var submitButton = form.find('input').last();   
-    submitButton.prop('disabled', !noFieldsBlank);
-  });
-  */  
   // Allows for AJAX
-  // Taken from http://henrik.nyh.se/2008/05/rails-authenticity-token-with-jquery
+  // (http://henrik.nyh.se/2008/05/rails-authenticity-token-with-jquery)
   $(document).ajaxSend(function(event, request, settings) {
     if (typeof(AUTH_TOKEN) == "undefined") return;
     // settings.data is a serialized string like "foo=bar&baz=boink" (or null)
