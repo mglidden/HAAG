@@ -1,17 +1,17 @@
-<table>
-  <tr>
-    <td><%= f.label :description %></td>
-    <td><%= f.text_field :description %></td>
-    <td><%= f.link_to_remove "remove" %></td>
-  </tr>
-  
-  <tr>
-    <td><%= f.label :course %></td>
-    <td><%= f.collection_select(:course_id, @courses, :id, :name) %></td>
-  </tr>
-  <tr>
-    <td><%= f.label :due_at %></td>
-    <td><%= f.text_field :due_at, :value => @default_date %></td>
-  </tr>
-
-</table>
+<div>
+  <table>
+    <tr>
+      <td><%= f.label :description %></td>
+      <td><%= f.text_field :description %></td>
+      <td><%= f.link_to_remove "remove" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :course %></td>
+      <td><%= f.collection_select(:course_id, @courses, :id, :name) %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :due_at %></td>
+      <td><%= f.text_field :due_at, :value => @default_date %></td>
+    </tr>
+  </table>
+</div>
