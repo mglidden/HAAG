@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+include CoursesHelper
 
 adrian = User.find_or_create_by_email(
   :name => 'Adrian V. Mullings', 
@@ -27,19 +28,19 @@ ricardo = User.find_or_create_by_email(
   :password_confirmation => 'secret'
 )
 
-computer_system_engineering = Course.find_or_create_by_short_name(
+computer_system_engineering = Course.find_or_create_by_name(
   :name => '6.033 Computer System Engineering',
-  :color => 'rgb(229,162,142)'
+  :color => random_color_str
 )
 
-user_interface_design = Course.find_or_create_by_short_name(
+user_interface_design = Course.find_or_create_by_name(
   :name => '6.813/6.831 User Interface Design',
-  :color => 'rgb(129,192,102)'
+  :color => random_color_str
 )
 
-microelectronics = Course.find_or_create_by_short_name(
+microelectronics = Course.find_or_create_by_name(
   :name => '6.012 Microelectronic Devices and Circuits',
-  :color => 'rgb(129,192,102)'
+  :color => random_color_str
 ) 
 
 User.all.each do |user|
