@@ -4,7 +4,7 @@
 
 <% user.messages.each do |message| %>
   <%# TODO: style using css %>
-  <div style='border:1px solid black;'>
+  <div>
     <%= message.content %>
     <%= form_tag( add_or_dismiss_message_path(message), :method => :post ) do %>
       <%= submit_tag 'Add', :value => 'add' %>
