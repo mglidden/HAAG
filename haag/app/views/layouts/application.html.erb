@@ -14,9 +14,9 @@
 <body>
   <div id=header>
     <div id=header-content class='container'>
-      <div id=logo>
+      <a href='/' id=logo>
         Haag
-      </div>
+      </a>
       <div id=header-right>
       	<% if current_user %>
         Logged in as <%= current_user.name %> (<%= link_to "sign out", destroy_user_session_path, :method => :delete  %>)

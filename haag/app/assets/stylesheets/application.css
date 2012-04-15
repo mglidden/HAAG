@@ -27,6 +27,12 @@ html {
   font-size:30pt;
 }
 
+#logo:hover {
+  background-color:transparent;
+  color: #666;
+  text-decoration:none;
+}
+
 #header-right {
   float:right;
   font-size:20pt;
