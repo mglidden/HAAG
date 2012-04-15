@@ -1,24 +1,9 @@
 
 <%= form_tag( create_batch_assignments_path, :method => :post ) do %>
-
-  <table>
-    <tr>
-      <td>Description</td>
-      <td><%= text_field_tag :description %></td>  
-    </tr>
-    <tr>
-      <td>Class</td>
-      <td>
-        <%= select_tag(:course_id, 
-          options_from_collection_for_select(@courses,'id','name',@courses.first) ) %>
-      </td>
-    </tr>
-    <tr>
-      <td>Due date</td>
-      <td><%= text_field_tag :due_at, '', :class => 'datepicker' %></td>
-    </tr>
-  </table>
   
+  <%= render :partial => 'batch_item', :locals => { :index => 0 } %>
+  <%= render :partial => 'batch_item', :locals => { :index => 1 } %>
+    
   <%= submit_tag 'Save assignments' %>
 
 <% end %>
@@ -28,7 +13,16 @@
   
 <%= javascript_tag do %>
 
-  $('.datepicker').datepicker();
+  $('.datepicker').datepicker(
+    { onSelect: function(dateText, inst) { 
+        validateField(
+          'due_at', 
+          $(this).val(),
+          $(this)
+        ) 
+      }   
+    }
+  );
 
 <% end %>
 

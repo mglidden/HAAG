@@ -1,0 +1,21 @@
+<div>  
+  
+  <table>
+    <tr>
+      <td>Description</td>
+      <td><%= text_field_tag "description_#{index}" %></td>  
+    </tr>
+    <tr>
+      <td>Class</td>
+      <td>
+        <%= select_tag("course_id_#{index}", 
+          options_from_collection_for_select(@courses,'id','name',@default_course) ) %>
+      </td>
+    </tr>
+    <tr>
+      <td>Due date</td>
+      <td><%= text_field_tag "due_at_#{index}", '', :class => 'datepicker' %></td>
+    </tr>
+  </table>
+  
+</div>

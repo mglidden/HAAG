@@ -3,9 +3,9 @@ class AssignmentsController < ApplicationController
   
   # for adding multiple assignments at once
   def new_batch
-    @courses = current_user.courses
-    @course = @courses.first
     @user = current_user
+    @courses = current_user.courses
+    @default_course = @courses.first
     @default_date = Date.today
   end
   
