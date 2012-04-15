@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.text_field :description, :class => 'validate' %>
   </div>
   <div class="field">
     <%= f.label :course %><br />
@@ -48,3 +48,5 @@
     $('#assignment_due_at').datepicker();
   <% end %>
 <% end %>
+
+<%= script_for_live_validation %>

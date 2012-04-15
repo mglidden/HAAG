@@ -1,19 +1,19 @@
 class Courses::AssignmentsController < ApplicationController
   before_filter :authenticate_user!
-  
-  # GET /assignments
+    
+  # GET /courses/1/assignments
   def index
     @course = Course.find(params[:course_id])
     @assignments = @course.assignments
   end
 
-  # GET /assignments/1
+  # GET /courses/1/assignments/1
   def show
     @course = Course.find(params[:course_id])
     @assignment = Assignment.find(params[:id])
   end
 
-  # GET /assignments/new
+  # GET /courses/1/assignments/new
   def new
     @course = Course.find(params[:course_id])
     @assignment = Assignment.new

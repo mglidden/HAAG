@@ -11,14 +11,10 @@ class Course < ActiveRecord::Base
   end
   
   def self.validate_field(field, value)
-    validity = Course.new(field => value)
-    p validity
-    p validity.valid?
-    p validity.errors
-    
-    validity.valid?    
-    if validity.errors[field]
-      ajaxResponse = {:valid => false, field.to_sym => validity.errors[field]}
+    instance = Course.new(field => value)
+    instance.valid?    
+    if instance.errors[field]
+      ajaxResponse = {:valid => false, field.to_sym => instance.errors[field]}
     else
       ajaxResponse = {:valid => true}
     end  

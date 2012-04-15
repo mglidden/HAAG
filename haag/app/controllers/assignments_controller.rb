@@ -1,6 +1,11 @@
 class AssignmentsController < ApplicationController
   before_filter :authenticate_user!
   
+  # POST /courses/1/assignents/validate
+  def validate  
+    render :json => Assignment.validate_field(params[:field], params[:value])
+  end
+  
   # GET /assignments
   def index
     @course = Course.find(params[:course_id])

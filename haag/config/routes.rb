@@ -17,7 +17,9 @@ Haag::Application.routes.draw do
     collection { post :validate }
   end
   
-  resources :assignments
+  resources :assignments do
+    collection { post :validate }    
+  end
 
   resource :dashboard, :only => :show
 
