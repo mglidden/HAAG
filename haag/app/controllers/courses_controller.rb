@@ -4,22 +4,9 @@ include CoursesHelper
 class CoursesController < ApplicationController
   before_filter :authenticate_user!
 
-
   def validate
-    # rpj: original code from the tutorial:    
-#    if params[:field].blank? || params[:value].blank?
-#      render :nothing => true
-#    else
-#       @valid = Course.validate_field(params[:field], params[:value])
-#       render :json => @valid
-#    end
-
-    # rpj: modified code to allow for 'cant be blank' errors:     
-    @valid = Course.validate_field(params[:field], params[:value])
-    render :json => @valid
-    
+    render :json => Course.validate_field(params[:field], params[:value])
   end
-  
   
   # GET /courses
   def index

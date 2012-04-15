@@ -13,13 +13,15 @@
 
   <div class="field">
     <%= f.label :short_name %><br />
-    <%= f.text_field :short_name, :class => 'live-validatable' %>
+    <%= f.text_field :short_name, :class => 'validate' %>
   </div>
   <div class="field">
     <%= f.label :long_name %><br />
-    <%= f.text_field :long_name, :class => 'live-validatable' %>
+    <%= f.text_field :long_name, :class => 'validate' %>
   </div>
   <div class="actions">
     <%= f.submit 'Create class' %>
   </div>
 <% end %>
+
+<%= script_for_live_validation %>

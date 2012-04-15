@@ -14,15 +14,8 @@ Haag::Application.routes.draw do
 
   resources :courses do
     resources :assignments
-    collection do
-      post :validate
-    end
+    collection { post :validate }
   end
-  
-  #match 'courses/validate' => 'courses#validate', :method => :post
-  
-  #map.resources :contacts, :member => {:validate => :post}
-
   
   resources :assignments
 

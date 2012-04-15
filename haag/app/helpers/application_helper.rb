@@ -6,4 +6,8 @@ module ApplicationHelper
     link_to(content_tag(:button, button_text, :type => 'button'), url, html_options)
   end
 
+  def script_for_live_validation()
+    javascript_tag "activateLiveValidation();"
+  end
+
 end

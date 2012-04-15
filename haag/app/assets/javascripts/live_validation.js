@@ -1,6 +1,22 @@
 // http://www.emersonlackey.com/article/rails-ajax-validations-jquery
 
-function validate_field(name, value, field) {
+// To add live validation to a model:
+//
+// 1) Create a method named 'validate' in controller with the following line:
+//    render :json => ModelName.validate_field(params[:field], params[:value])
+//
+// 2) Add the corresponding route:
+//    resources :model_name_in_plural do
+//      collection { post :validate }
+//    end
+//
+// 3) Add CSS class 'validate' to input fields
+//
+// 4) In the view, include a call to script_for_live_validation:
+//    <%= script_for_live_validation %>  
+//
+
+function validateField(name, value, field) {
   var postData = { };
   postData['field'] = name;
   postData['value'] = value;
@@ -20,8 +36,10 @@ function validate_field(name, value, field) {
         $(field).after('<span class="inlineError">' + data[name] + '</span>');
     }
   };
-
-  $.post('/courses/validate', postData, postRequestCallback, 'json');
+  
+  var controller_name = field.selector.match('#([a-z]*)_')[1]
+  var postUrl = '/' + controller_name + 's/validate';
+  $.post(postUrl, postData, postRequestCallback, 'json');
 }
 
 // General delay function, used to watch keyups,
@@ -45,11 +63,11 @@ Array.prototype.in_array = function(p_val) {
 }
 
 function activateLiveValidation() {
-  $(".live-validatable").keyup( function() {
+  $(".validate").keyup( function() {
     var postDelayCallback = function(field_id) {
       var atribute_name = field_id.match(/_(.*)/)[1];
       field = $("#" + field_id);
-      validate_field(
+      validateField(
         atribute_name, 
         field.val(),
         field
