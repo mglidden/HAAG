@@ -6,11 +6,6 @@ class CoursesController < ApplicationController
 
 
   def validate
-    p '======================================================'   
-    p '======================================================'
-    p "CoursesController#validate"
-    p params
-    
     # rpj: original code from the tutorial:    
 #    if params[:field].blank? || params[:value].blank?
 #      render :nothing => true
@@ -19,7 +14,7 @@ class CoursesController < ApplicationController
 #       render :json => @valid
 #    end
 
-    # rpj: modeified code to show 'cant be blank' errors:     
+    # rpj: modified code to allow for 'cant be blank' errors:     
     @valid = Course.validate_field(params[:field], params[:value])
     render :json => @valid
     

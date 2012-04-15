@@ -17,7 +17,7 @@ class Course < ActiveRecord::Base
     p validity.errors
     
     validity.valid?    
-    if validity.errors[field] and !validity.valid?
+    if validity.errors[field]
       ajaxResponse = {:valid => false, field.to_sym => validity.errors[field]}
     else
       ajaxResponse = {:valid => true}

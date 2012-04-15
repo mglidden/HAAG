@@ -44,12 +44,26 @@ Array.prototype.in_array = function(p_val) {
   return false;
 }
 
-// Allows for AJAX
-// Taken from http://henrik.nyh.se/2008/05/rails-authenticity-token-with-jquery
-$(document).ajaxSend(function(event, request, settings) {
-  if( typeof (AUTH_TOKEN) == "undefined")
-    return;
-  // settings.data is a serialized string like "foo=bar&baz=boink" (or null)
-  settings.data = settings.data || "";
-  settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
-});
+function activateLiveValidation() {
+  $(".live-validatable").keyup( function() {
+    var postDelayCallback = function(field_id) {
+      var atribute_name = field_id.match(/_(.*)/)[1];
+      field = $("#" + field_id);
+      validate_field(
+        atribute_name, 
+        field.val(),
+        field
+      );
+    };   
+    delay(postDelayCallback(this.id), 600);
+  });
+    
+  // Allows for AJAX
+  // Taken from http://henrik.nyh.se/2008/05/rails-authenticity-token-with-jquery
+  $(document).ajaxSend(function(event, request, settings) {
+    if (typeof(AUTH_TOKEN) == "undefined") return;
+    // settings.data is a serialized string like "foo=bar&baz=boink" (or null)
+    settings.data = settings.data || "";
+    settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
+  });    
+}
