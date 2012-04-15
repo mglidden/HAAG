@@ -49,3 +49,17 @@ html {
   background-color:#e1e1db;
   padding:10px 15px;
 }
+
+.box a {
+  background-color:transparent;
+  color:black;
+}
+
+.box a:hover {
+  background-color:transparent;
+  color:black;
+}
+
+.box a:visited {
+  color:black;
+}
