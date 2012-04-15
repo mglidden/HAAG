@@ -18,13 +18,21 @@ class Assignment < ActiveRecord::Base
     end
   end
   
-  def self.validate_field(field, value)
-    instance = Assignment.new(field => value)
-    instance.valid?    
-    if instance.errors[field]
-      ajaxResponse = {:valid => false, field.to_sym => instance.errors[field]}
+  def self.validate_field(attribute_name, value)
+    attribute_type = self.columns_hash[attribute_name].type
+    attribute_symbol = attribute_name.to_sym
+    
+    if attribute_type == :datetime
+      instance = Assignment.new(attribute_symbol => DateTime.strptime(value,"%m/%d/%Y"))
     else
-      ajaxResponse = {:valid => true}
-    end  
+      instance = Assignment.new(attribute_symbol => value)
+    end
+
+    instance.valid?
+    if instance.errors[attribute_name].present?
+      ajax_response = {:valid => false, attribute_symbol => instance.errors[attribute_name]}
+    else
+      ajax_response = { :valid => true }
+    end
   end  
 end

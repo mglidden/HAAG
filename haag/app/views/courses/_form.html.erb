@@ -12,15 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :short_name %><br />
-    <%= f.text_field :short_name, :class => 'validate' %>
-  </div>
-  <div class="field">
-    <%= f.label :long_name %><br />
-    <%= f.text_field :long_name, :class => 'validate' %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => 'validate' %>
   </div>
   <div class="actions">
-    <%= f.submit 'Create class' %>
+    <%= f.submit 'Create class', :disabled => true %>
   </div>
 <% end %>
 

@@ -2,8 +2,7 @@
 
 <table class='index'>
   <tr>
-    <th>Short name</th>
-    <th>Long name</th>
+    <th>Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,8 +10,7 @@
 
 <% @courses.each do |course| %>
   <tr>
-    <td><%= course.short_name %></td>
-    <td><%= course.long_name %></td>
+    <td><%= course.name %></td>
     <td><%= link_to 'Show', course_assignments_path(course) %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
     <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %></td>

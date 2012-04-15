@@ -3,7 +3,7 @@ class AssignmentsController < ApplicationController
   
   # POST /courses/1/assignents/validate
   def validate  
-    render :json => Assignment.validate_field(params[:field], params[:value])
+    render :json => Assignment.validate_field(params[:attribute_name], params[:attribute_value])
   end
   
   # GET /assignments

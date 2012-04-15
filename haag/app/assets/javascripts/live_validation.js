@@ -16,28 +16,43 @@
 //    <%= script_for_live_validation %>  
 //
 
-function validateField(name, value, field) {
+function validateField(attributeName, attributeValue, field) {
   var postData = { };
-  postData['field'] = name;
-  postData['value'] = value;
+  postData['attribute_name'] = attributeName;
+  postData['attribute_value'] = attributeValue;
 
   var postRequestCallback =  function(data) {
-    // if array has any contents it should be an error message
-    var dataValid = (data[name].length == 0); 
-
-    if (dataValid) {
+    var form = $(field).closest('form');
+    var submitButton = form.find('input').last();
+    
+    if (data.valid) {
         $(field).parent('p').removeClass('fieldWithErrors');
         $(field).removeClass('haag-field-with-errors');
         $(field).next('span').fadeOut(200, function() { $(this).remove(); });
+        //submitButton.prop('disabled', false);
     } else {
         $(field).parent('p').addClass('fieldWithErrors');
         $(field).addClass('haag-field-with-errors');
         $(field).next('span').remove();
-        $(field).after('<span class="inlineError">' + data[name] + '</span>');
+        $(field).after('<span class="inlineError">' + data[attributeName] + '</span>');
+        //submitButton.prop('disabled', true);
     }
-  };
   
-  var controller_name = field.selector.match('#([a-z]*)_')[1]
+    var form = $(field).closest('form');
+    var anyFieldsBlank = false;
+    //$('.validate').each(function(index) {
+    form.find('input').each(function(index) {
+      if ($(this).val() == '')
+        anyFieldsBlank = true;
+    });
+    
+    var submitButton = form.find('input').last();   
+    submitButton.prop('disabled', !data.valid || anyFieldsBlank);
+  
+    //submitButton.prop('disabled', !data.object_valid);
+  };
+
+  var controller_name = $(field).selector.match('#([a-z]*)_')[1]
   var postUrl = '/' + controller_name + 's/validate';
   $.post(postUrl, postData, postRequestCallback, 'json');
 }
@@ -63,19 +78,38 @@ Array.prototype.in_array = function(p_val) {
 }
 
 function activateLiveValidation() {
-  $(".validate").keyup( function() {
+
     var postDelayCallback = function(field_id) {
-      var atribute_name = field_id.match(/_(.*)/)[1];
-      field = $("#" + field_id);
+      var atributeName = field_id.match(/_(.*)/)[1];
+      var field = $("#" + field_id);
       validateField(
-        atribute_name, 
+        atributeName, 
         field.val(),
         field
       );
     };   
+  
+  $(".validate").keyup( function() {
     delay(postDelayCallback(this.id), 600);
   });
+
+  $(".validate").bind( 'dateSelected', function() {
+    postDelayCallback(this.id);
+    alert('yooh');
+  });
+      
+/*  $('.validate').change( function() {    
+    var noFieldsBlank = true;
+    $('.validate').each(function(index) {
+      if ($(this).val() == '')
+        noFieldsBlank = false;
+    });
     
+    var form = $(this).closest('form');
+    var submitButton = form.find('input').last();   
+    submitButton.prop('disabled', !noFieldsBlank);
+  });
+  */  
   // Allows for AJAX
   // Taken from http://henrik.nyh.se/2008/05/rails-authenticity-token-with-jquery
   $(document).ajaxSend(function(event, request, settings) {

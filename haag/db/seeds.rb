@@ -28,20 +28,17 @@ ricardo = User.find_or_create_by_email(
 )
 
 computer_system_engineering = Course.find_or_create_by_short_name(
-  :short_name => '6.033',
-  :long_name => 'Computer System Engineering',
+  :name => '6.033 Computer System Engineering',
   :color => 'rgb(229,162,142)'
 )
 
 user_interface_design = Course.find_or_create_by_short_name(
-  :short_name => '6.813/6.831',
-  :long_name => 'User Interface Design',
+  :name => '6.813/6.831 User Interface Design',
   :color => 'rgb(129,192,102)'
 )
 
 microelectronics = Course.find_or_create_by_short_name(
-  :short_name => '6.012',
-  :long_name => 'Microelectronic Devices and Circuits',
+  :name => '6.012 Microelectronic Devices and Circuits',
   :color => 'rgb(129,192,102)'
 ) 
 
