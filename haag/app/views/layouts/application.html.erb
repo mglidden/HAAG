@@ -28,7 +28,7 @@
     <div id=content class='container'>
       <% link_to "sign out", destroy_user_session_path, :method => :delete  %>
       <% if notice %>
-        <p class="notice"><%= notice %></p>
+        <p class="alert alert-info"><%= notice %></p>
       <% end %>
       <% if alert %>
         <p class="alert"><%= alert %></p>
