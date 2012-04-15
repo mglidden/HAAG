@@ -38,6 +38,14 @@ html {
   font-size:20pt;
 }
 
+#sign-out {
+  color:#666;
+}
+
+#sign-out:hover {
+  background-color:transparent;
+}
+
 #content-container {
   height:100%;
   padding-top:15px;

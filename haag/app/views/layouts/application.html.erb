@@ -19,7 +19,7 @@
       </a>
       <div id=header-right>
       	<% if current_user %>
-        Logged in as <%= current_user.name %> (<%= link_to "sign out", destroy_user_session_path, :method => :delete  %>)
+          Logged in as <%= current_user.name %> (<%= link_to "sign out", destroy_user_session_path, :method => :delete, :id => 'sign-out' %>)
         <% end %>
       </div>
     </div>

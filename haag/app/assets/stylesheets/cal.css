@@ -44,6 +44,15 @@
   width:70%;
 }
 
+#course-lst a:visited {
+  color:black;
+}
+
+#course-lst a:hover {
+  background-color:transparent;
+  color:black;
+}
+
 #day-names {
   text-align:center;
 }
