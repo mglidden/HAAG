@@ -11,31 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description, :class => 'validate' %>
-  </div>
-  <div class="field">
-    <%= f.label :course %><br />
-    <%#= f.text_field :course %>
-    
-<%= 
-  select_tag( 
-    :course_id, 
-    options_from_collection_for_select(
-      @courses, 
-      'id', 
-      'name', 
-      @courses.first
-    ) 
-  ) 
-%>    
-  </div>
-  <div class="field" id='due-at'>
-    <%= f.label :due_at %><br />
-    <%= f.text_field :due_at, :value => @default_date %>
-  </div>
-  
+  <table>
+    <tr>
+      <td><%= f.label :description %></td>
+      <td><%= f.text_field :description, :class => 'validate' %></td>  
+    </tr>
+    <tr>
+      <td><%= f.label :course %></td>
+      <td><%=  
+        select_tag( 
+          :course_id, 
+          options_from_collection_for_select(
+            @courses, 
+            'id', 
+            'name', 
+            @courses.first
+          )
+        )
+      %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :due_at %></td>
+      <td><%= f.text_field :due_at, :value => @default_date %></td>
+    </tr>
+  </table>
+
   <div class="actions">
     <%= f.submit :disabled => true %>
   </div>

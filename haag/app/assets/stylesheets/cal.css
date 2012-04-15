@@ -94,6 +94,7 @@
 }
 
 .cal-completed-assignment {
-  color:red;
+  /* color:red; */
+  color:black;
   text-decoration:line-through;
 }
