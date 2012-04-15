@@ -3,7 +3,7 @@
 // To add live validation to a model:
 //
 // 1) Create a method named 'validate' in controller with the following line:
-//    render :json => ModelName.validate_field(params[:field], params[:value])
+//    render :json => ModelName.json_for_validation(params[:field], params[:value])
 //
 // 2) Add the corresponding route:
 //    resources :model_name_in_plural do

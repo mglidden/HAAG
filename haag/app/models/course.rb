@@ -1,38 +1,31 @@
-require 'live_validator'
-
-# module LiveValidator
-    # def validate_field(field, value)       
-      # instance = self.new(field => value)
-      # instance.valid?    
-      # if instance.errors[field].present?
-        # ajaxResponse = { :valid => false, field.to_sym => instance.errors[field] }
-      # else
-        # ajaxResponse = { :valid => true }
-      # end    
-    # end
-# end
-
 class Course < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :assignments, :dependent => :destroy
   
   validates_presence_of :name
   
-  # def self.validate_field(field, value)
-    # instance = Course.new(field => value)
-    # instance.valid?    
-    # if instance.errors[field].present?
-      # ajaxResponse = { :valid => false, field.to_sym => instance.errors[field] }
-    # else
-      # ajaxResponse = { :valid => true }
-    # end  
-  # end
-  
-  #include LiveValidator
-  extend LiveValidator
-    
   def short_name
     name.split(' ', 2).first
   end
+  
+  # TODO: this method is duplicated in various models and should be extracted to a module
+  def self.json_for_validation(attribute_name, attribute_value_as_string)
+    column = self.columns_hash[attribute_name]
+    attribute_type = column.type
     
+    attribute_value = case attribute_type
+    when :datetime then DateTime.strptime(attribute_value_as_string,"%m/%d/%Y")
+    else attribute_value_as_string
+    end
+
+    instance = self.new(attribute_name => attribute_value)
+    instance.valid?
+    if instance.errors[attribute_name].present?
+      attribute_symbol = attribute_name.to_sym
+      ajax_response = { :valid => false, attribute_symbol => instance.errors[attribute_name] }
+    else
+      ajax_response = { :valid => true }
+    end
+  end
+   
 end

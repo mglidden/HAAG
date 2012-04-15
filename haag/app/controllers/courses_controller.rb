@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   before_filter :authenticate_user!
 
   def validate
-    render :json => Course.validate_field(params[:attribute_name], params[:attribute_value])
+    render :json => Course.json_for_validation(params[:attribute_name], params[:attribute_value])
   end
   
   # GET /courses
