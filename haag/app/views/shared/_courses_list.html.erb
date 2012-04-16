@@ -1,25 +1,35 @@
-<div id=course-lst>
-  <div id=course-lst-header>
-    <span id=course-lst-label>
-      Courses
-    </span>
+<div id=sidebar>
+  
+  <div class=sidebar-header>
+    <span>Classes</span>
   </div>
-  <div id=course-lst-body>
+  
+  <div class=sidebar-body>
     <ul>
-    <% current_user.courses.each do |course| %>
+      <% current_user.courses.each do |course| %>
       <li class='course-lst-itm' style='background-color:<%= course.color %>' color=<%= course.color %> href='/assignments/new?default_course=<%= course.id %>'><%= course.name %></li>
-    <% end %>
+      <% end %>
+      <li><%= link_to 'Create a new class', new_course_path, :class => 'popup' %></li>
+      <li><%= link_to 'Subscribe to an existing class', new_user_subscription_path(current_user), :class => 'popup' %></li>
     </ul>
-    <hr/>
-    <%= link_to 'Create a new class', new_course_path, :class => 'popup' %>
-    <br/>
-    <%= link_to 'Subscribe to an existing class', new_user_subscription_path(current_user), :class => 'popup' %>
-    <br/>
-    <%= link_to 'Create an assignment', new_assignment_path, :class => 'popup' %>
-    <br/>
-    <%= link_to 'Create multiple assignments', new_assignments_list_path, :class => 'popup' %>
-    <br/>
-    <hr/>
+  </div>
+
+  <div class=sidebar-header>
+    <span>Assignments</span>
+  </div>
+
+  <div class=sidebar-body>
+    <ul>
+      <li><%= link_to 'Create an assignment', new_assignment_path, :class => 'popup' %></li>
+      <li><%= link_to 'Create multiple assignments', new_assignments_list_path, :class => 'popup' %></li>
+    </ul>
+  </div>
+
+  <div class=sidebar-header>
+    <span>Messages</span>
+  </div>
+    
+  <div class=sidebar-body style='height:100%;'>
     <%= render :partial => 'shared/messages', :locals => { :user => current_user } %>
   </div>
 </div>
