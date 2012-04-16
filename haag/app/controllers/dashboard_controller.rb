@@ -33,7 +33,7 @@ class DashboardController < ApplicationController
         if due_date.day >= @start_day and due_date.month == today.month
           @shown_tasks[due_date.day - @start_day + 1].push(task)
         elsif due_date.day <= @days_month - 28 + @start_day and 
-          @shown_tasks[due_date.day + days_month - @start_day + 1].push(task)
+          @shown_tasks[due_date.day + @days_month - @start_day + 1].push(task)
         end
       end
     end
