@@ -16,7 +16,7 @@ $(document).ready( function() {
       title: $(this).text(),
       modal: true,
       resizable:false,
-      minWidth: 340,
+      minWidth: 400,
       draggable:false
     });
     return false;
@@ -26,7 +26,7 @@ $(document).ready( function() {
       title: "Create a new assignment",
       modal: true,
       resizable:false,
-      minWidth: 340,
+      minWidth: 400,
       draggable:false
     });
     return false;
@@ -42,7 +42,7 @@ $(document).ready( function() {
       title: "Create a new assignment",
       modal: true,
       resizable:false,
-      minWidth: 340,
+      minWidth: 400,
       draggable:false
     });
     return false;

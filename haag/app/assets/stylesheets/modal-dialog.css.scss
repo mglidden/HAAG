@@ -9,7 +9,7 @@
   background-color: #fdd;
 }
 
-#modal-dialog input[type="submit"] {
+#modal-dialog input[type="submit"].centered {
   display: block;
   margin : 0 auto;
   text-align: center;  
@@ -26,4 +26,19 @@
     font-weight: bold;
     padding-right: 12px;
   }
+}
+
+.icon-remove {
+  margin-bottom: 10px; 
+  margin-left: 6px;
+}
+
+#modal-dialog .link-remove a {
+  text-decoration: none; 
+  background-color: none;
+}
+
+#modal-dialog .link-remove a:hover {
+  text-decoration: none; 
+  background-color: none;
 }
