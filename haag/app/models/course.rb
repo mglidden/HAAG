@@ -12,16 +12,12 @@ class Course < ActiveRecord::Base
   end
   
   # TODO: this method is duplicated in various models and should be extracted to a module
-  def self.json_for_validation(attribute_name, attribute_value_as_string)
+  def self.json_for_validation(attribute_name, attribute_value)
     column = self.columns_hash[attribute_name]
     attribute_type = column.type
     
-    attribute_value = case attribute_type
-    when :datetime then DateTime.strptime(attribute_value_as_string,"%m/%d/%Y")
-    else attribute_value_as_string
-    end
-
     instance = self.new(attribute_name => attribute_value)
+    
     instance.valid?
     if instance.errors[attribute_name].present?
       attribute_symbol = attribute_name.to_sym

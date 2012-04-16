@@ -1,37 +1,6 @@
 class AssignmentsController < ApplicationController
   before_filter :authenticate_user!
   
-  # for adding multiple assignments at once
-  def new_batch
-    @user = current_user
-    @courses = current_user.courses
-    @default_course = @courses.first
-    @default_date = Date.today
-  end
-  
-  def create_batch
-    p params
-    
-    assignment_params = {}
-    
-    params.each_pair do |key, value|
-      if key.start_with?('description', 'course_id', 'due_at')
-        index = key.split('_').last.to_i
-        attribute = key.chomp("_#{index}").to_sym
-        p index
-        p attribute
-        value = DateTime.strptime(value,"%m/%d/%Y") if attribute == :due_at
-        p value
-        assignment_params[index] ||= {}
-#assignment_params[index] =        assignment_params[index].merge(attribute => value)
-        assignment_params[index].merge!(attribute => value)
-        p assignment_params
-      end
-    end
-    
-    redirect_to root_path, notice: 'Awesome!'
-  end
-  
   # POST /courses/1/assignents/validate
   def validate  
     render :json => Assignment.json_for_validation(params[:attribute_name], params[:attribute_value])
