@@ -25,7 +25,8 @@
     </ul>
   </div>
 
-  <div class=sidebar-header>
+  
+  <div class=sidebar-header <%= current_user.messages.any? ? '' : "style='display:none'" %>>
     <span>Messages</span>
   </div>
     

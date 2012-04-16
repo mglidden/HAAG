@@ -1,7 +1,4 @@
-<% if user.messages.any? %>
-  <h2>New messages</h2>
-<% end %>
-
+<div class=sidebard-body style='height:100%'>
 <% user.messages.each do |message| %>
   <%# TODO: style using css %>
   <div>
@@ -12,3 +9,4 @@
     <% end %>
   </div>
 <% end %>
+</div>
