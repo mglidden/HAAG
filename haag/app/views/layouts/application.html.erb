@@ -18,6 +18,17 @@
       <a href='/' id=logo>
         Haag
       </a>
+      
+      <div style='float:left; margin: 0px 24px 0px 24px;'>
+        <p>
+          <% if mobile_device? %>
+            <%= link_to "Full Site", :mobile => 0 %>
+          <% else %>
+            <%= link_to "Mobile Site", :mobile => 1 %>
+          <% end %>
+        </p>
+      </div>
+      
       <div id=header-right>
       	<% if current_user %>
           Logged in as <%= current_user.name %> (<%= link_to "sign out", destroy_user_session_path, :method => :delete, :id => 'sign-out' %>)

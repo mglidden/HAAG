@@ -44,6 +44,11 @@ class DashboardController < ApplicationController
       year = today.year
       CalDate.new(day, month, year, tasks)
     end
+    
+    respond_to do |format|
+      format.html
+      format.mobile
+    end    
   end
   
 end
