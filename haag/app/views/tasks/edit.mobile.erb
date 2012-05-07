@@ -2,17 +2,17 @@
 
 <%= form_for(@task) do |f| %>
   
-  
   <ul class='edit rounded'>
     <li>
       <%= @task.assignment.description %>
     </li>
     <li>
-      Completed?
-      <span class=toggle>
-        <%= f.check_box :mark_as_completed %> 
-      </span>     
+        <%= f.check_box :completed %>&nbsp;Completed</li> 
     </li>
   </ul>
 
+  <div style='margin: 0px 12px 0px 12px;'>
+    <%= link_to "Update", nil, :class => "whiteButton submit" %>      
+  </div>
+  
 <% end %>

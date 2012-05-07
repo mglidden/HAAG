@@ -35,7 +35,11 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     
     if @task.update_attributes(params[:task])
-      redirect_to @task, notice: 'Task was successfully updated.'
+      if mobile_device?
+        redirect_to root_path, notice: 'Task was successfully updated.'
+      else
+        redirect_to @task, notice: 'Task was successfully updated.'
+      end
     else
       render action: "edit"
     end
@@ -54,5 +58,15 @@ class TasksController < ApplicationController
     @task.mark_as_completed
     @task.save
     render :layout => false, :inline => "task completed"
+  end
+  
+  def update_completion
+    @task = Task.find(params[:id])
+    p params[:completed]
+    # if @task.update_attributes(params[:task])
+      # redirect_to @task, notice: 'Task was successfully updated.'
+    # else
+      # render action: "edit"
+    # end    
   end
 end

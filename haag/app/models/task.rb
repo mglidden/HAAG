@@ -18,7 +18,7 @@ class Task < ActiveRecord::Base
   end
 
   def completed=(value)
-    if value
+    if value && value != '0'
       mark_as_completed
     else
       update_attribute(:completed_at, nil)
