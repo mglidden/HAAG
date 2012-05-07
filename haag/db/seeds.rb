@@ -53,21 +53,21 @@ nanoquiz_makeup = Assignment.find_or_create_by_description(
   :creator => adrian,
   :description => 'Nanoquiz Makeup',
   :course_id => user_interface_design.id,
-  :due_at => 1.day.from_now
+  :due_at => 1.day.from_now.to_s
 )
 
 therac_reading = Assignment.find_or_create_by_description(
   :creator => mason,
   :description => 'Reading Therac paper',
   :course_id => computer_system_engineering.id,
-  :due_at => 2.days.from_now
+  :due_at => 2.days.from_now.to_s
 )
 
 ps1 = Assignment.find_or_create_by_description(
   :creator => ricardo,
   :description => 'Problem Set 1',
   :course_id => microelectronics.id,
-  :due_at => 5.days.from_now
+  :due_at => 5.days.from_now.to_s
 )
 
 User.all.each do |user|
