@@ -59,6 +59,7 @@ Devise.setup do |config|
 
   # If http headers should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
+  config.http_authenticatable_on_xhr = false
 
   # The realm used in Http Basic Authentication. "Application" by default.
   # config.http_authentication_realm = "Application"
@@ -223,5 +224,3 @@ Devise.setup do |config|
   # end
 end
 
-# http://stackoverflow.com/questions/8146590/devise-sign-in-issue-with-jquery-mobile-and-rails
-ActionController::Responder.class_eval do alias :to_mobile :to_html end

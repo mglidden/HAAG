@@ -13,11 +13,16 @@ class ApplicationController < ActionController::Base
     render options.merge(:layout => !request.xhr?)
   end
 
+  
 private
   
   def prepare_for_mobile
     session[:mobile_param] = params[:mobile] if params[:mobile]
     request.format = :mobile if mobile_device?
+
+    # if (devise_controller? && action_name == 'create' && request.method == 'POST')
+      # request.format = :html
+    # end
   end
   
   def mobile_device?

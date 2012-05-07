@@ -32,6 +32,8 @@ class DashboardController < ApplicationController
       end
     end
     
+    @mobile_tasks = @shown_tasks
+
     @shown_tasks = @shown_tasks.enum_for(:each_with_index).collect do |tasks, index|
       day = (index + @start_day - 1) % @days_month + 1
       month = (index + @start_day - 1) / @days_month + today.month
