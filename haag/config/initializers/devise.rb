@@ -203,6 +203,7 @@ Devise.setup do |config|
   #
   # The "*/*" below is required to match Internet Explorer requests.
   # config.navigational_formats = ["*/*", :html]
+  config.navigational_formats = ["*/*", :html, :mobile]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
@@ -221,3 +222,6 @@ Devise.setup do |config|
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
 end
+
+# http://stackoverflow.com/questions/8146590/devise-sign-in-issue-with-jquery-mobile-and-rails
+ActionController::Responder.class_eval do alias :to_mobile :to_html end
