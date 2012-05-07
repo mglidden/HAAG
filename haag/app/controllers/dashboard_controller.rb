@@ -17,12 +17,6 @@ class DashboardController < ApplicationController
       @shown_tasks[i] = []
     end
 
-    # rpj: I had to change it to show only the assignments associated  
-    # with the current user (through a task); otherwise, all assignments  
-    # for all courses would be shown
-    # mglidden: the code is equilivant - @user.courses only shows courses
-    # that the user has. But @user.tasks is clearer than the nested iteration
-
     @user.tasks.each do |task|
       assignment = task.assignment
       due_date = assignment.due_at
@@ -37,13 +31,13 @@ class DashboardController < ApplicationController
         end
       end
     end
-
+    
     @shown_tasks = @shown_tasks.enum_for(:each_with_index).collect do |tasks, index|
       day = (index + @start_day - 1) % @days_month + 1
       month = (index + @start_day - 1) / @days_month + today.month
       year = today.year
       CalDate.new(day, month, year, tasks)
-    end
+    end    
     
     respond_to do |format|
       format.html

@@ -9,6 +9,10 @@ module ApplicationHelper
   def script_for_live_validation()
     javascript_tag "activateLiveValidation();"
   end
+  
+  def title(title_str)
+    content_for(:title) { title_str }
+  end
 
   def errors_for(object, message=nil)
     html = ""

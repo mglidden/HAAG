@@ -13,4 +13,16 @@ class Task < ActiveRecord::Base
     update_attribute(:completed_at, Time.current)
   end
 
+  def completed
+    completed?
+  end
+
+  def completed=(value)
+    if value
+      mark_as_completed
+    else
+      update_attribute(:completed_at, nil)
+    end
+  end
+
 end
