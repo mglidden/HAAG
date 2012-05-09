@@ -1,5 +1,5 @@
 module CoursesHelper
-  def random_color
+  def random_color_normalized
     # randomly creates a color in HSV, then converts to RGB
     # algorithm from http://en.wikipedia.org/wiki/HSL_and_HSV#From_HSV
     h = rand(360)
@@ -28,10 +28,21 @@ module CoursesHelper
     end
   end
 
-  def random_color_str
-    color = random_color.collect! do |c|
-      (c*255).floor().to_s
+  def color_str(color)
+    return "rgb(#{color[0]},#{color[1]},#{color[2]})"
+  end
+
+  def random_color
+    color = random_color_normalized.collect! do |c|
+      (c*255).floor()
     end
-    return 'rgb('+color[0]+','+color[1]+','+color[2]+')'
+    return color
+  end
+
+  def darken_color(color)
+    puts color
+    return color.collect do |val|
+      val-50
+    end
   end
 end

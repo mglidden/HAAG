@@ -28,19 +28,23 @@ ricardo = User.find_or_create_by_email(
   :password_confirmation => 'secret'
 )
 
+random_colors = (0..2).collect {|i| random_color}
 computer_system_engineering = Course.find_or_create_by_name(
   :name => '6.033 Computer System Engineering',
-  :color => random_color_str
+  :color => color_str(random_colors[0]),
+  :finished_color => color_str(darken_color(random_colors[0]))
 )
 
 user_interface_design = Course.find_or_create_by_name(
   :name => '6.813/6.831 User Interface Design',
-  :color => random_color_str
+  :color => color_str(random_colors[1]),
+  :finished_color => color_str(darken_color(random_colors[1]))
 )
 
 microelectronics = Course.find_or_create_by_name(
   :name => '6.012 Microelectronic Devices and Circuits',
-  :color => random_color_str
+  :color => color_str(random_colors[2]),
+  :finished_color => color_str(darken_color(random_colors[2]))
 ) 
 
 User.all.each do |user|

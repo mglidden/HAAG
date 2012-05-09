@@ -108,7 +108,7 @@
   border-width:2px;
   margin:0 3px 5px 3px;
   padding:1px 4px;
-  -webkit-transition:border linear 0.1s, box-shadow linear 0.1s;
+  -webkit-transition:border linear 0.1s, box-shadow linear 0.1s, background-color linear 0.1s;
 }
 
 .cal-unfinished-assignment:hover {

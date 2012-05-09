@@ -32,7 +32,9 @@ class CoursesController < ApplicationController
   # POST /courses
   def create
     @course = Course.new(params[:course])
-    @course.color = random_color_str
+    color = random_color
+    @course.color = color_str(color)
+    @course.finished_color = color_str(darken_color(color))
     
     if @course.save
       current_user.courses.push(@course)
