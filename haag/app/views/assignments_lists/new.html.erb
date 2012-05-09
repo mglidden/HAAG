@@ -1,7 +1,13 @@
 <%= nested_form_for @list do |f| %>
   <%#= f.error_messages %>
   <%= f.fields_for :assignments %>
-  <%= f.link_to_add "Keep adding", :assignments, :type => 'button' %>, 
-  <%= f.submit "Cancel" %>, or 
-  <%= f.submit "Save assignments" %>
+
+  <div class=button-wrapper>
+    <%= f.link_to_add "Keep adding", 
+      :assignments, 
+      :type => 'button', 
+      :class => 'btn btn-inverse link-button'      
+    %>
+    <%= f.submit "Save assignments", :class => ' btn-inverse' %>
+  </div>
 <% end %>
