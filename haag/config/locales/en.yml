@@ -3,3 +3,8 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    label:
+      assignment:
+        course: 'Class'
+        due_at: 'Due on'
