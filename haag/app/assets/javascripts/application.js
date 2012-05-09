@@ -31,10 +31,16 @@ $(document).ready( function() {
     });
     return false;
   });
-  $('.cal-assignment').click(function(event) {
+  $('.cal-unfinished-assignment').click(function(event) {
     $.ajax($(this).attr('href'));
     $(this).addClass('cal-completed-assignment');
     $(this).removeClass('cal-unfinished-assignment');
+    return false;
+  });
+  $('.cal-completed-assignment').click(function(event) {
+    $.ajax($(this).attr('href'));
+    $(this).addClass('cal-unfinished-assignment');
+    $(this).removeClass('cal-completed-assignment');
     return false;
   });
   $('.course-lst-itm').click(function(event) {

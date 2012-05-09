@@ -10,6 +10,7 @@ Haag::Application.routes.draw do
 
   resources :tasks
   match '/tasks/:id/complete' => 'tasks#complete'
+  match '/tasks/:id/toggle' => 'tasks#toggle'
 
   resources :assignments_lists do
     

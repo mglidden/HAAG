@@ -53,6 +53,13 @@ class TasksController < ApplicationController
     redirect_to tasks_url
   end
 
+  def toggle
+    @task = Task.find(params[:id])
+    @task.toggle_completed
+    @task.save
+    render :layout => false, :inline => "task toggled"
+  end
+
   def complete
     @task = Task.find(params[:id])
     @task.mark_as_completed

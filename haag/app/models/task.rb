@@ -13,6 +13,18 @@ class Task < ActiveRecord::Base
     update_attribute(:completed_at, Time.current)
   end
 
+  def mark_as_unfinished
+    update_attribute(:completed_at, nil)
+  end
+
+  def toggle_completed
+    if completed?
+      mark_as_unfinished
+    else
+      mark_as_completed
+    end
+  end
+
   def completed
     completed?
   end

@@ -22,7 +22,7 @@
             <% puts task.assignment %>
             <% puts task.assignment.course %>
             <% puts 'end' %>
-            <div class='cal-assignment <%= task.completed? ? 'cal-completed-assignment' : 'cal-unfinished-assignment'%>' style='background-color:<%= task.assignment.course.color %>' href='/tasks/<%= task.id %>/complete'>
+            <div class='cal-assignment <%= task.completed? ? 'cal-completed-assignment' : 'cal-unfinished-assignment'%>' style='background-color:<%= task.assignment.course.color %>' href='/tasks/<%= task.id %>/toggle'>
               <span style='color:black'>
                 <%= task.assignment.description%>
               </span>
