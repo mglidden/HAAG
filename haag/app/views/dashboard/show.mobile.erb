@@ -1,16 +1,17 @@
-<% content_for(:title) { "Assignments" } %>
+<% title 'Assignments' %>
 
-<ul>
+<ul data-role="listview" data-inset="true">
   <% for task in @user.tasks %>
 
     <% if task.completed? %>
-      <li class="arrow" style="text-decoration: line-through;" >
+      <li style="text-decoration: line-through;" >
     <% else %>
-        <li class="arrow" >
+      <li>
     <% end %>
 
     <%= link_to h(task.assignment.description), edit_task_path(task) %>
-    <small class=counter style='margin-right:20px;'><%= task.assignment.due_at.strftime('%-m/%-d') %></small>
+    <span class="ui-li-count"><%= task.assignment.due_at.strftime('%-m/%-d') %></span>
+    
   </li>
   <% end %>
 </ul>

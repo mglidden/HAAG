@@ -2,17 +2,15 @@
 
 <%= form_for(@task) do |f| %>
   
-  <ul class='edit rounded'>
+  <ul data-role="listview" data-inset="true">
     <li>
       <%= @task.assignment.description %>
     </li>
     <li>
-        <%= f.check_box :completed %>&nbsp;Completed</li> 
+      <%= f.label :completed %><%= f.check_box :completed %> 
     </li>
   </ul>
 
-  <div style='margin: 0px 12px 0px 12px;'>
-    <%= link_to "Update", nil, :class => "whiteButton submit" %>      
-  </div>
+    <%= f.submit "Update", :class => 'whiteButton' %>      
   
 <% end %>
