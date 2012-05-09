@@ -31,18 +31,8 @@ $(document).ready( function() {
     });
     return false;
   });
-  $('.cal-unfinished-assignment').click(function(event) {
-    $.ajax($(this).attr('href'));
-    $(this).addClass('cal-completed-assignment');
-    $(this).removeClass('cal-unfinished-assignment');
-    return false;
-  });
-  $('.cal-completed-assignment').click(function(event) {
-    $.ajax($(this).attr('href'));
-    $(this).addClass('cal-unfinished-assignment');
-    $(this).removeClass('cal-completed-assignment');
-    return false;
-  });
+  $('.cal-unfinished-assignment').click(tasks.finishClick);
+  $('.cal-completed-assignment').click(tasks.unfinishClick);
   $('.course-lst-itm').click(function(event) {
     $('#modal-dialog').text('').load($(this).attr('href')).dialog({
       title: "Create a new assignment",
