@@ -1,4 +1,5 @@
-<p>Available classes
+<p>Available classes</p>
+
 <%= form_tag( user_subscriptions_path(@user), :method => :post ) do %>
 <%= 
   select_tag( 
@@ -8,10 +9,13 @@
       'id', 
       'name', 
       @default_course
-    ) 
+    ),
+    :class => 'dialog-wide'
   ) 
 %>
-<%= submit_tag 'Subscribe', :class => 'btn btn-inverse' %> or <%= link_to 'Cancel', root_path %>
-<% end %>
-</p>
 
+<div class=button-wrapper>
+<%= submit_tag 'Subscribe', :class => 'btn btn-inverse' %>
+</div>
+
+<% end %>
