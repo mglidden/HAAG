@@ -1,6 +1,8 @@
 <%= nested_form_for @list do |f| %>
   <%#= f.error_messages %>
+  <% @include_delete = false %>
   <%= f.fields_for :assignments %>
+  <% @include_delete = true %>
 
   <div class=button-wrapper>
     <%= f.link_to_add "Keep adding", 
