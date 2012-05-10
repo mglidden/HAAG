@@ -8,9 +8,9 @@ class DashboardController < ApplicationController
     @user = current_user
     @courses = Course.all
 
-    delta = params[:delta] ? params[:delta].to_i * 28 : 0
+    @delta = params[:delta] ? params[:delta].to_i * 28 : 0
 
-    today = Date.new(Time.new.year, Time.new.month, Time.new.day) + delta
+    today = Date.new(Time.new.year, Time.new.month, Time.new.day) + @delta
     @start = (today - (today.wday + 7))
     @end = @start + 27
     @days_month = (Date.new(@start.year, 12, 31) << (12-@start.month)).day

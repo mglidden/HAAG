@@ -1,33 +1,39 @@
-<table id=cal> <tr id=day-names>
-    <td class=sidebar-header>Sun</td>
-    <td class=sidebar-header>Mon</td>
-    <td class=sidebar-header>Tue</td>
-    <td class=sidebar-header>Wed</td>
-    <td class=sidebar-header>Thu</td>
-    <td class=sidebar-header>Fri</td>
-    <td class=sidebar-header>Sat</td>
-  </tr>
-  <% (0..3).each do |week| %>
-    <tr class='cal-week'>
-      <% (0..6).each do |day| %>
-        <% index = week*7 + day %>
-        <% cal_date = @shown_tasks[index] %>
-        <td class='cal-day popup' href='/assignments/new?day=<%= cal_date.day %>&month=<%= cal_date.month%>&year=<%= cal_date.year%>'>
-          <span class=date-num>
-            <%= cal_date.day %>
-          </span>
-          <% cal_date.tasks.each do |task| %>
-            <div class='cal-assignment <%= task.completed? ? 'cal-completed-assignment' : 'cal-unfinished-assignment'%>' style='background-color:<%= task.completed? ? task.assignment.course.finished_color : task.assignment.course.color %>' href='/tasks/<%= task.id %>/toggle' color='<%= task.assignment.course.color %>' finishedColor='<%= task.assignment.course.finished_color %>'>
-              <span style='color:black'>
-                <div class='task-class-name'>
-                  <%= task.assignment.course.name %>:
-                </div>
-                <%= task.assignment.description %>
-              </span>
-            </div>
-          <% end %>
-        </td>
-      <% end %>
+<div id=cal-container>
+  <table id=cal> <tr id=day-names>
+      <td class=sidebar-header>Sun</td>
+      <td class=sidebar-header>Mon</td>
+      <td class=sidebar-header>Tue</td>
+      <td class=sidebar-header>Wed</td>
+      <td class=sidebar-header>Thu</td>
+      <td class=sidebar-header>Fri</td>
+      <td class=sidebar-header>Sat</td>
     </tr>
-  <% end %>
-</table>
+    <% (0..3).each do |week| %>
+      <tr class='cal-week'>
+        <% (0..6).each do |day| %>
+          <% index = week*7 + day %>
+          <% cal_date = @shown_tasks[index] %>
+          <td class='cal-day popup' href='/assignments/new?day=<%= cal_date.day %>&month=<%= cal_date.month%>&year=<%= cal_date.year%>'>
+            <span class=date-num>
+              <%= cal_date.day %>
+            </span>
+            <% cal_date.tasks.each do |task| %>
+              <div class='cal-assignment <%= task.completed? ? 'cal-completed-assignment' : 'cal-unfinished-assignment'%>' style='background-color:<%= task.completed? ? task.assignment.course.finished_color : task.assignment.course.color %>' href='/tasks/<%= task.id %>/toggle' color='<%= task.assignment.course.color %>' finishedColor='<%= task.assignment.course.finished_color %>'>
+                <span style='color:black'>
+                  <div class='task-class-name'>
+                    <%= task.assignment.course.name %>:
+                  </div>
+                  <%= task.assignment.description %>
+                </span>
+              </div>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <div id=cal-buttons>
+    <a id='cal-prev' href='/?delta=<%= @delta / 28 - 1 %>'>Previous month</a>
+    <a id='cal-next' href='/?delta=<%= @delta / 28 + 1 %>'>Next month</a>
+  </div>
+</div>

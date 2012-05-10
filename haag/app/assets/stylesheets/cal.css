@@ -48,11 +48,16 @@
   color:black;
 }
 
+#cal-container {
+  float:left;
+  width:70%;
+}
+
 #cal {
   border-collapse:separate;
   border-spacing:2px;
-  float:left;
-  width:70%;
+  margin-bottom:2px;
+  width:100%;
 }
 
 #day-names {
@@ -121,4 +126,24 @@
 .cal-completed-assignment {
   color:black;
   text-decoration:line-through;
+}
+
+#cal-buttons {
+  float:left;
+  margin-bottom:5px;
+  width:100%;
+}
+
+#cal-prev, #cal-next {
+  background-color:transparent;
+  color:#E1E1DB;
+  text-decoration:none;
+}
+
+#cal-prev {
+  float:left;
+}
+
+#cal-next {
+  float:right;
 }
