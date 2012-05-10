@@ -2,15 +2,15 @@
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'scroll'}) do |f| %>
   
-  <ul>
+  <ul data-role="listview" data-inset="true">
     <li><%= f.text_field :email, :placeholder => 'Email' %></li>  
     <li><%= f.password_field :password , :placeholder => 'Password'%></li>  
     <% if devise_mapping.rememberable? -%>
-      <li><%= f.check_box :remember_me %>&nbsp;Remember me</li>
+      <li><%= f.label :remember_me %><%= f.check_box :remember_me %></li>
     <% end -%>
   </ul>
 
-  <%= link_to "Submit", nil, :class => "whiteButton submit" %>
+  <%= f.submit "Sign in", :class => 'whiteButton' %>
     
 <% end %>
 
