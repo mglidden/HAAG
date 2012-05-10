@@ -14,7 +14,7 @@ Haag::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -33,6 +33,16 @@ Haag::Application.configure do
   # is an example of default_url_options appropriate for a development environment 
   # in config/environments/development.rb:
   # (In production, :host should be set to the actual host of your application.)
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-    
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => "127.0.0.1:3000" }
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :domain => 'localhost:3000',
+    :host => 'localhost:3000',
+    :user_name => 'haag.email@gmail.com',
+    :password => 'NUPv0NGsVSQCz4hmlUBY',
+    :authentication => 'plain',
+    :enable_starttls_auto => true
+  }
 end
