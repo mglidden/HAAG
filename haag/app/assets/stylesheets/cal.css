@@ -140,6 +140,10 @@
   text-decoration:none;
 }
 
+#cal-prev:hover, #cal-next:hover {
+  text-decoration:underline
+}
+
 #cal-prev {
   float:left;
 }
