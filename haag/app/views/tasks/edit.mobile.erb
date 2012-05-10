@@ -7,6 +7,15 @@
     <li><%= f.label :completed %><%= f.check_box :completed %></li>
   </ul>
 
-  <%= f.submit "Update", :class => 'whiteButton' %>      
+  <%= f.submit "Update", :class => 'whiteButton', :rel => 'external' %>      
   
+<% end %>
+
+<%= javascript_tag do %>
+  $('input.whiteButton').live("click", function() {
+    if ($('#task_completed').is(':checked'))
+      $('input[name="task[completed]"][type=hidden]').attr('value', 1);
+    else
+      $('input[name="task[completed]"][type=hidden]').attr('value', 0);
+  })  
 <% end %>
