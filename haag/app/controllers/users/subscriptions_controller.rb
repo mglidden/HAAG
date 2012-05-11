@@ -24,4 +24,15 @@ class Users::SubscriptionsController < ApplicationController
     end    
   end
 
+  def destroy
+    course = Course.find(params[:course_id])
+    user = User.find(params[:user_id])
+    user.courses.delete(course)
+    user.tasks = user.tasks.find_all do |task|
+      task.assignment.course != course
+    end
+    user.save
+    redirect_to :controller => '/dashboard', :action => 'show'
+  end
+
 end

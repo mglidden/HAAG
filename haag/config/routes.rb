@@ -41,6 +41,7 @@ Haag::Application.routes.draw do
   resources :users do
     resources :subscriptions, :only => [:new, :create], :controller => 'users/subscriptions'
   end
+  match '/users/:user_id/subscriptions/:course_id/destroy' => 'users/subscriptions#destroy'
   
   devise_scope :user do
     root :to => "dashboard#show" 

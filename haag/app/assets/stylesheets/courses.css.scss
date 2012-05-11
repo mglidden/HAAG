@@ -1,3 +1,17 @@
 // Place all the styles related to the Courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.course-lst-remove {
+  border-radius:10px;
+  float:right;
+  font-size:13pt;
+  margin-right:1px;
+  opacity:0.0;
+  padding:0 4px;
+  -webkit-transition:background-color linear 0.07s, opacity linear 0.06s;
+}
+
+.course-lst-remove:hover {
+  background-color:#bbb;
+}

@@ -43,5 +43,14 @@ $(document).ready( function() {
     });
     return false;
   });
+  $('.course-lst-itm').hover(function(event) {
+    event.currentTarget.childNodes[1].style.opacity = '1.0';
+  }, function(event) {
+    event.currentTarget.childNodes[1].style.opacity = '0.0';
+  });
+  $('.course-lst-remove').click(function(event) {
+    console.log('here');
+    return false;
+  });
 });
 
