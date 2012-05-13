@@ -9,7 +9,7 @@
       <li>
     <% end %>
 
-    <%= link_to h(task.assignment.description), edit_task_path(task) %>
+    <%= link_to h(task.assignment.description), edit_task_path(task), 'rel' => 'external', :onclick => 'console.log("yeah, babe");' %>
     <span class="ui-li-count"><%= task.assignment.due_at.strftime('%-m/%-d') %></span>
     
   </li>

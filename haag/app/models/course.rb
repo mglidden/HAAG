@@ -3,6 +3,7 @@ class Course < ActiveRecord::Base
   has_many :assignments, :dependent => :destroy
   
   validates_presence_of :name
+  validates_uniqueness_of :name
   
   # required by nested_form
   accepts_nested_attributes_for :assignments

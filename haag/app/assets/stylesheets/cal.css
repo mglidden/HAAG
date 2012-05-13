@@ -114,6 +114,8 @@
   margin:0 3px 5px 3px;
   padding:1px 4px;
   -webkit-transition:border linear 0.1s, box-shadow linear 0.1s, background-color linear 0.1s;
+  text-indent: -10px;
+  padding-left: 12px;
 }
 
 .cal-unfinished-assignment:hover {
