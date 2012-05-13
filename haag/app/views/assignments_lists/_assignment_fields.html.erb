@@ -4,7 +4,7 @@
       <td><%= f.label :description %></td>
       <td><%= f.text_field :description %></td>
       <% if @include_delete %>
-        <td><%= f.link_to_remove( image_tag("icon_remove.png", :class => 'icon-remove'), :class => 'link-remove' )%></td>
+        <td><%= f.link_to_remove( image_tag("icon_remove.png", :class => 'icon-remove', :title => 'Delete this assignment'), :class => 'link-remove' )%></td>
       <% end %>
     </tr>
     <tr>
