@@ -14,7 +14,7 @@
     <tr>
       <td><%= f.label :due_at %></td>
       <td>
-        <%= f.text_field :due_at, :class => 'datepicker-no-validation' %>
+        <%= f.text_field :due_at, :class => 'datepicker-no-validation', :value => @default_date %>
       </td>
     </tr>
   </table>

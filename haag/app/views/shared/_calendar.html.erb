@@ -13,7 +13,8 @@
         <% (0..6).each do |day| %>
           <% index = week*7 + day %>
           <% cal_date = @shown_tasks[index] %>
-          <td class='cal-day popup' href='/assignments/new?day=<%= cal_date.day %>&month=<%= cal_date.month%>&year=<%= cal_date.year%>'>
+          <td class='cal-day popup' href='/assignments/new?day=<%= cal_date.day %>&month=<%= cal_date.month+1%>&year=<%= cal_date.year%>'>
+          <!--td class='cal-day popup' href=<%= new_assignments_list_path + "?day=#{cal_date.day}&month=#{cal_date.month+1}&year=#{cal_date.year}" %>-->
             <span class=date-num>
               <%= cal_date.day %>
             </span>
