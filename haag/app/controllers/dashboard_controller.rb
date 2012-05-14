@@ -34,15 +34,15 @@ class DashboardController < ApplicationController
         end
       end
     end
-    
-    @mobile_tasks = @shown_tasks
-    
+      
     @shown_tasks = @shown_tasks.enum_for(:each_with_index).collect do |tasks, index|
       day = (index + @start.mday - 1) % @days_month + 1
       month = (index + @start.mday - 1) / @days_month + today.month - 1
       year = today.year
       CalDate.new(day, month, year, tasks)
     end
+
+    @mobile_tasks = @user.tasks.sort_by { |task| task.assignment.due_at }
     
     respond_to do |format|
       format.html

@@ -1,7 +1,7 @@
 <% title 'Assignments' %>
 
 <ul data-role="listview" data-inset="true">
-  <% for task in @user.tasks %>
+  <% for task in @mobile_tasks %>
 
     <% if task.completed? %>
       <li style="text-decoration: line-through;" >
