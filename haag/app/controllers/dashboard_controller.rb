@@ -39,7 +39,7 @@ class DashboardController < ApplicationController
 
     @shown_tasks = @shown_tasks.enum_for(:each_with_index).collect do |tasks, index|
       day = (index + @start.mday - 1) % @days_month + 1
-      month = (index + @start.mday - 1) / @days_month + today.month - 1
+      month = (index + @start.mday - 1) / @days_month + today.month
       year = today.year
       CalDate.new(day, month, year, tasks)
     end    

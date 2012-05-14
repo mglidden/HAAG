@@ -1,0 +1,15 @@
+#home-left {
+  float:left;
+}
+
+#home-left span {
+  color:#E1E1DB;
+  font-size:24pt;
+  line-height:1.1;
+}
+
+#home-right {
+  float:right;
+  height:313px;
+  margin-right:190px;
+}
