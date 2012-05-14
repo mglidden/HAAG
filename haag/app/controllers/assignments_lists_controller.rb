@@ -5,7 +5,11 @@ class AssignmentsListsController < ApplicationController
     @list = AssignmentsList.new
     @list.assignments << Assignment.new
     @courses = current_user.courses
-    
+
+    if params[:day] and params[:month] and params[:year]
+      @default_date = params[:month] + '/' + params[:day] + '/' + params[:year]
+    end
+        
     render :layout => false
   end
   

@@ -26,7 +26,7 @@ class DashboardController < ApplicationController
       unless due_date
         break
       end
-      if due_date >= @start and due_date <= @end
+      if due_date.to_date >= @start and due_date.to_date <= @end
         if due_date.month == @start.month
           @shown_tasks[due_date.day - @start.day + 1].push(task)
         else
@@ -34,15 +34,15 @@ class DashboardController < ApplicationController
         end
       end
     end
-    
-    @mobile_tasks = @shown_tasks
-
+      
     @shown_tasks = @shown_tasks.enum_for(:each_with_index).collect do |tasks, index|
       day = (index + @start.mday - 1) % @days_month + 1
       month = (index + @start.mday - 1) / @days_month + today.month
       year = today.year
       CalDate.new(day, month, year, tasks)
-    end    
+    end
+
+    @mobile_tasks = @user.tasks.sort_by { |task| task.assignment.due_at }
     
     respond_to do |format|
       format.html

@@ -34,7 +34,9 @@ class Assignment < ActiveRecord::Base
   
   after_create do |assignment|
     course.users.each do |user|
-      if user.name != creator.name
+      if user.name == creator.name
+        user.tasks.create(:assignment => assignment)
+      elsif shared?
         content = "#{course.short_name} #{creator.name} created the assignment " +
           "#{assignment.description}, due on #{assignment.due_at}" 
         message = Message.create(
@@ -42,8 +44,6 @@ class Assignment < ActiveRecord::Base
           :recipient => user,
           :assignment => assignment
         )
-      else
-        user.tasks.create(:assignment => assignment)
       end
     end
   end

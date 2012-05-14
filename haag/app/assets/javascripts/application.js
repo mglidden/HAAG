@@ -23,7 +23,8 @@ $(document).ready( function() {
   });
   $('td.popup').click(function() {
     $('#modal-dialog').text('').load($(this).attr('href')).dialog({
-      title: "Create a new assignment",
+      //title: "Create a new assignment",
+      title: "Create assignments",
       modal: true,
       resizable:false,
       minWidth: 400,
@@ -35,7 +36,8 @@ $(document).ready( function() {
   $('.cal-completed-assignment').click(tasks.unfinishClick);
   $('.course-lst-itm').click(function(event) {
     $('#modal-dialog').text('').load($(this).attr('href')).dialog({
-      title: "Create a new assignment",
+      //title: "Create a new assignment",
+      title: "Create assignments",
       modal: true,
       resizable:false,
       minWidth: 400,
