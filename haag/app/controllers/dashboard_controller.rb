@@ -26,7 +26,7 @@ class DashboardController < ApplicationController
       unless due_date
         break
       end
-      if due_date.to_date >= @start and due_date.to_date <= @end
+      if due_date.to_date >= @start and due_date.to_date < @end
         if due_date.month == @start.month
           @shown_tasks[due_date.day - @start.day + 1].push(task)
         else
