@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509224808) do
+ActiveRecord::Schema.define(:version => 20120514033129) do
 
   create_table "assignments", :force => true do |t|
     t.string   "description"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120509224808) do
     t.datetime "updated_at"
     t.datetime "due_at"
     t.integer  "user_id"
+    t.boolean  "shared",      :default => true
   end
 
   add_index "assignments", ["course_id"], :name => "index_assignments_on_course_id"

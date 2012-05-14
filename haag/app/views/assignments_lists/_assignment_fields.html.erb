@@ -1,4 +1,4 @@
-<div>
+<div style='border-bottom: 1px solid #ccc; margin-top: 4px; margin-bottom:24px;'>
   <table>
     <tr>
       <td><%= f.label :description %></td>
@@ -17,6 +17,10 @@
         <%= f.text_field :due_at, :class => 'datepicker-no-validation', :value => @default_date %>
       </td>
     </tr>
+    <tr>
+      <td></td>
+      <td style='text-align:left;'><%= f.check_box :shared, :value => '1' %>&nbsp;<%= f.label :shared, :style => 'display:inline;' %></td>
+    </tr>    
   </table>
 </div>
 

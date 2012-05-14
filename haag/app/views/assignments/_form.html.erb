@@ -34,6 +34,10 @@
       <td><%= f.label :due_at %></td>
       <td><%= f.text_field :due_at, :value => @default_date %></td>
     </tr>
+    <tr>
+      <td></td>
+      <td><%= f.check_box :shared, :value => '1' %>&nbsp;<%= f.label :shared, :style => 'display:inline;' %></td>
+    </tr>
   </table>
 
   <div class='button-wrapper'>
