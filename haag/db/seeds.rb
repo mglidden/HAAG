@@ -8,21 +8,18 @@
 include CoursesHelper
 
 adrian = User.find_or_create_by_email(
-  :name => 'Adrian V. Mullings', 
   :email => 'mullings@mit.edu',
   :password => 'secret',
   :password_confirmation => 'secret'
 )
 
 mason = User.find_or_create_by_email(
-  :name => 'Mason G. Glidden', 
   :email => 'mglidden@mit.edu',
   :password => '1234567890',
   :password_confirmation => '1234567890'
 )
 
 ricardo = User.find_or_create_by_email(
-  :name => 'Ricardo P. Jasinski', 
   :email => 'jasinski@mit.edu',
   :password => 'secret',
   :password_confirmation => 'secret'
