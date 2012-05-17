@@ -34,7 +34,7 @@ class Assignment < ActiveRecord::Base
   
   after_create do |assignment|
     course.users.each do |user|
-      if user.name == creator.name
+      if user.email == creator.email
         user.tasks.create(:assignment => assignment)
       elsif shared?
         content = "#{course.short_name} #{creator.name} created the assignment " +
